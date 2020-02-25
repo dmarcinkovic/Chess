@@ -136,10 +136,25 @@ public:
      */
     void setMarkMoves(bool mark1);
 
+    /**
+     * Checks if current move is correct.
+     *
+     * @param x Current x position of the piece.
+     * @param y Current y position of the piece.
+     * @return True if move is correct.
+     */
     bool isCorrectMove(int x, int y);
 
+    /**
+     * Method used to return to previous move.
+     */
     void returnMove();
 
+    /**
+     * Returns current position of the piece.
+     *
+     * @return Current piece position.
+     */
     std::pair<int, int> getPosition() const;
 
     /**
