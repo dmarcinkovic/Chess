@@ -16,15 +16,14 @@ void Knight::getAvailableMoves()
     constexpr std::array<int, 8> indices2 = {1, 1, -1, -1, 2, 2, -2, -2};
 
     moves.clear();
-
     moves.emplace_back(std::make_pair(destRect.x, destRect.y));
+
     for (int i = 0; i < indices1.size(); i++)
     {
         auto position = std::make_pair(destRect.x + indices1[i] * Board::width,
                                        destRect.y + indices2[i] * Board::height);
 
-        Piece *piece = Board::occupied[position];
-        if ((piece == nullptr || piece->getPieceColor() != color) && Board::isInsideBoard(position))
-            moves.emplace_back(position);
+        addSquareIfNotOccupied(position);
+        addSquareIfOccupied(position);
     }
 }
