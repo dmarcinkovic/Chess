@@ -3,6 +3,7 @@
 //
 
 #include "King.h"
+#include "Rook.h"
 
 King::King(int x, int y, PieceColor color) : Piece(x, y, color)
 {

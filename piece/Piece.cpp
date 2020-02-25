@@ -36,6 +36,8 @@ void Piece::alignPiece(int x, int y)
 {
     auto result = Board::getAlignedPosition(x, y);
 
+    prevDestRect = destRect;
+
     destRect.x = result.first;
     destRect.y = result.second;
 }
@@ -106,6 +108,16 @@ void Piece::addSquareIfOccupied(const std::pair<int, int> &position)
     {
         moves.insert(position);
     }
+}
+
+bool Piece::isCorrectMove(int x, int y)
+{
+    return moves.contains(Board::getAlignedPosition(x,y));
+}
+
+void Piece::returnMove()
+{
+    destRect = prevDestRect;
 }
 
 

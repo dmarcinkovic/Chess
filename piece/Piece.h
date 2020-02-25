@@ -136,6 +136,10 @@ public:
      */
     void setMarkMoves(bool mark1);
 
+    bool isCorrectMove(int x, int y);
+
+    void returnMove();
+
     /**
      * Allow Pieces class access to all members of this class.
      */

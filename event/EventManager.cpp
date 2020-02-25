@@ -19,11 +19,19 @@ void EventManager::mouseReleased(const SDL_Event &event, Pieces *pieces)
     if (liftedPiece)
     {
         liftedPiece = false;
-        piece->alignPiece(event.button.x, event.button.y);
-        Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = piece;
 
-        pieces->getAvailableMoves();
-        switchTurn();
+        if (!piece->isCorrectMove(event.button.x, event.button.y))
+        {
+            piece->returnMove();
+            Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = piece;
+        } else
+        {
+            piece->alignPiece(event.button.x, event.button.y);
+            Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = piece;
+
+            pieces->getAvailableMoves();
+            switchTurn();
+        }
     }
 
     if (piece) piece->setMarkMoves(false);
