@@ -1,0 +1,4 @@
+/home/david/Preuzimanja/Programs/clion-2019.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/local/bin/gcc -DCMAKE_CXX_COMPILER=/usr/local/bin/g++ -G "CodeBlocks - Unix Makefiles" /home/david/Cpp/Chess
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/david/Cpp/Chess/cmake-build-release

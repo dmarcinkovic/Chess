@@ -35,7 +35,7 @@ protected:
     static int width, height;
     static SDL_Texture *piece;
 
-    SDL_Rect srcRect{}, destRect{};
+    SDL_Rect srcRect{}, destRect{}, prevDestRect{};
 
     PieceColor color;
     bool mark{};

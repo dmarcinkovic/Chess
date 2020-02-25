@@ -17,6 +17,7 @@ Piece::Piece(int x, int y, PieceColor color)
     }
 
     destRect = SDL_Rect{x, y, Board::width, Board::height};
+    prevDestRect = destRect;
 }
 
 void Piece::draw() const

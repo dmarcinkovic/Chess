@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Chess"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/david/Cpp/Chess/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/david/Cpp/Chess/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Chess">
+				<Option output="/home/david/Cpp/Chess/cmake-build-release/Chess" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/david/Cpp/Chess/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-linux-gnu"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 Chess"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Chess/fast">
+				<Option output="/home/david/Cpp/Chess/cmake-build-release/Chess" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/david/Cpp/Chess/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-linux-gnu"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/lib/gcc/x86_64-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 Chess/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/david/Cpp/Chess/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/david/Cpp/Chess/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/david/Cpp/Chess/Game.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/Game.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/board/Board.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/board/Board.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/event/EventManager.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/event/EventManager.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/factory/PieceFactory.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/factory/PieceFactory.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/factory/Util.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/main.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/pair/PairHash.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Bishop.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Bishop.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/King.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/King.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Knight.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Knight.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Pawn.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Pawn.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Piece.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Piece.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Queen.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Queen.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Rook.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/piece/Rook.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/texture/Texture.cpp">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/texture/Texture.h">
+			<Option target="Chess"/>
+		</Unit>
+		<Unit filename="/home/david/Cpp/Chess/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
