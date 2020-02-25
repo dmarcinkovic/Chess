@@ -13,7 +13,6 @@ Pawn::Pawn(int x, int y, PieceColor color) : Piece(x, y, color)
 void Pawn::getAvailableMoves()
 {
     moves.clear();
-    moves.insert(std::make_pair(destRect.x, destRect.y));
 
     if (!Board::flipped)
     {
