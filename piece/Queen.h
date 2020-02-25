@@ -14,6 +14,20 @@
  */
 class Queen : public Piece
 {
+private:
+
+    /**
+     * Method used to add diagonal moves
+     * for queen.
+     */
+    void getDiagonalAvailableMoves();
+
+    /**
+     * Method used to add horizontal and vertical available
+     * moves for queen.
+     */
+    void getHorizontalAvailableMoves();
+
 public:
 
     /**
