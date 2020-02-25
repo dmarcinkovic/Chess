@@ -53,6 +53,11 @@ private:
 public:
 
     /**
+     * Bool indicating that board is flipped.
+     */
+    static bool flipped;
+
+    /**
      * Number of chess squares.
      */
     static int numberOfSquares;
@@ -70,7 +75,7 @@ public:
     /**
      * Map that stores all pieces.
      */
-    static std::unordered_map<std::pair<int, int>, Piece*, PairHash> occupied;
+    static std::unordered_map<std::pair<int, int>, Piece *, PairHash> occupied;
 
     /**
      * Initialize board.

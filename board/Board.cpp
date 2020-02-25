@@ -10,6 +10,8 @@ int Board::paddingX;
 int Board::paddingY;
 int Board::numberOfSquares = 8;
 
+bool Board::flipped = false;
+
 std::unordered_map<std::pair<int, int>, Piece*, PairHash> Board::occupied;
 
 Board::Board(int w, int h)
@@ -40,9 +42,11 @@ void Board::flip()
     if (angle == 0)
     {
         angle = 180;
+        flipped = true;
     } else
     {
         angle = 0;
+        flipped = false;
     }
 }
 

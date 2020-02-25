@@ -12,5 +12,74 @@ Pawn::Pawn(int x, int y, PieceColor color) : Piece(x, y, color)
 
 void Pawn::getAvailableMoves()
 {
+    moves.clear();
+    moves.emplace_back(std::make_pair(destRect.x, destRect.y));
 
+    if (!Board::flipped)
+    {
+        addSquares(PieceColor::WHITE);
+    } else
+    {
+        addSquares(PieceColor::BLACK);
+    }
+}
+
+void Pawn::addSquareIfNotOccupied(int y)
+{
+    auto position = std::make_pair(destRect.x, y);
+
+    if (Board::occupied[position] == nullptr && Board::isInsideBoard(position))
+    {
+        moves.emplace_back(position);
+    }
+}
+
+void Pawn::addSquares(const char *chessSquare, int sign)
+{
+    addSquareIfNotOccupied(destRect.y + sign * Board::height);
+    if (destRect.y == Board::getPosition(chessSquare).second)
+    {
+        addSquareIfNotOccupied(destRect.y + sign * 2 * Board::height);
+    }
+}
+
+void Pawn::addSquares(const PieceColor &piecesDown)
+{
+    addTakingMove(piecesDown);
+    if (color == piecesDown)
+    {
+        addSquares("a2", -1);
+    } else
+    {
+        addSquares("a7", 1);
+    }
+}
+
+void Pawn::addTakingMove(const PieceColor &piecesDown)
+{
+    if (piecesDown == color)
+    {
+        addTakingMove(-1);
+    } else
+    {
+        addTakingMove(1);
+    }
+}
+
+void Pawn::addTakingMove(int sign)
+{
+    auto position1 = std::make_pair(destRect.x - Board::width, destRect.y + sign *  Board::height);
+    auto position2 = std::make_pair(destRect.x + Board::width, destRect.y + sign *  Board::height);
+
+    addSquareIfOccupied(position1);
+    addSquareIfOccupied(position2);
+}
+
+void Pawn::addSquareIfOccupied(const std::pair<int, int> &position)
+{
+    Piece *piece = Board::occupied[position];
+    if (piece && piece->getPieceColor() != color)
+    {
+        moves.emplace_back(position);
+    }
 }
