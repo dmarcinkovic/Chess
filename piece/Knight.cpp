@@ -16,7 +16,7 @@ void Knight::getAvailableMoves()
     constexpr std::array<int, 8> indices2 = {1, 1, -1, -1, 2, 2, -2, -2};
 
     moves.clear();
-    moves.emplace_back(std::make_pair(destRect.x, destRect.y));
+    moves.insert(std::make_pair(destRect.x, destRect.y));
 
     for (int i = 0; i < indices1.size(); i++)
     {

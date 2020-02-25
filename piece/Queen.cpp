@@ -13,7 +13,7 @@ Queen::Queen(int x, int y, PieceColor color) : Piece(x, y, color)
 void Queen::getAvailableMoves()
 {
     moves.clear();
-    moves.emplace_back(std::make_pair(destRect.x, destRect.y));
+    moves.insert(std::make_pair(destRect.x, destRect.y));
 
     getDiagonalAvailableMoves();
     getHorizontalAvailableMoves();

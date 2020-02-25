@@ -19,6 +19,6 @@ void Bishop::getAvailableMoves()
     constexpr const int indices1[] = {-1, -1, 1, 1};
     constexpr const int indices2[] = {1, -1, 1, -1};
 
-    moves.emplace_back(std::make_pair(destRect.x, destRect.y));
+    moves.insert(std::make_pair(destRect.x, destRect.y));
     insertMoves(direction, indices1, indices2, 4);
 }

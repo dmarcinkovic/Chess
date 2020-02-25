@@ -6,12 +6,12 @@
 #define CHESS_PIECE_H
 
 #include <SDL2/SDL.h>
-#include <vector>
+#include <unordered_set>
 #include <functional>
 
 #include "../texture/Texture.h"
 #include "../Game.h"
-
+#include "../pair/PairHash.h"
 
 /**
  * Enum that represents piece color.
@@ -40,7 +40,7 @@ protected:
     PieceColor color;
     bool mark{};
 
-    std::vector<std::pair<int, int>> moves;
+    std::unordered_set<std::pair<int, int>, PairHash> moves;
 
     /**
      * Mark all available squares for this piece.
