@@ -62,7 +62,7 @@ protected:
      *
      * @param position Position of chess square.
      */
-    void addSquareIfNotOccupied(const std::pair<int,int> &position);
+    void addSquareIfNotOccupied(const std::pair<int, int> &position);
 
     /**
     * Method to add square to list of available squares if is occupied
@@ -70,7 +70,7 @@ protected:
     *
     * @param position Position of chess square to be added.
     */
-    void addSquareIfOccupied(const std::pair<int,int> &position);
+    void addSquareIfOccupied(const std::pair<int, int> &position);
 
 public:
 
@@ -139,6 +139,8 @@ public:
     bool isCorrectMove(int x, int y);
 
     void returnMove();
+
+    std::pair<int, int> getPosition() const;
 
     /**
      * Allow Pieces class access to all members of this class.

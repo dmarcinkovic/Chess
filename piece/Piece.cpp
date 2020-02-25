@@ -112,12 +112,17 @@ void Piece::addSquareIfOccupied(const std::pair<int, int> &position)
 
 bool Piece::isCorrectMove(int x, int y)
 {
-    return moves.contains(Board::getAlignedPosition(x,y));
+    return moves.contains(Board::getAlignedPosition(x, y));
 }
 
 void Piece::returnMove()
 {
     destRect = prevDestRect;
+}
+
+std::pair<int, int> Piece::getPosition() const
+{
+    return std::make_pair(destRect.x, destRect.y);
 }
 
 

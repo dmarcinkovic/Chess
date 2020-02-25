@@ -23,7 +23,7 @@ void EventManager::mouseReleased(const SDL_Event &event, Pieces *pieces)
         if (!piece->isCorrectMove(event.button.x, event.button.y))
         {
             piece->returnMove();
-            Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = piece;
+            Board::occupied[piece->getPosition()] = piece;
         } else
         {
             piece->alignPiece(event.button.x, event.button.y);
