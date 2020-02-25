@@ -17,13 +17,6 @@ class Pawn : public Piece
 private:
 
     /**
-     * Method that adds square as an available square if it is not occupied.
-     *
-     * @param y Y position of chess square.
-     */
-    void addSquareIfNotOccupied(int y);
-
-    /**
      * Method used to add available chess squares for pawn
      * depending on position on board (down on up).
      *
@@ -53,14 +46,6 @@ private:
      * @param sign Position on the board. -1 if pieces are down. Otherwise it is 1.
      */
     void addTakingMove(int sign);
-
-    /**
-     * Method to add square to list of available squares if is occupied
-     * by piece of opposite color.
-     *
-     * @param position Position of chess square to be added.
-     */
-    void addSquareIfOccupied(const std::pair<int, int> &position);
 
 public:
 

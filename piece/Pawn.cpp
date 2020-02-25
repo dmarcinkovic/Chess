@@ -24,22 +24,15 @@ void Pawn::getAvailableMoves()
     }
 }
 
-void Pawn::addSquareIfNotOccupied(int y)
-{
-    auto position = std::make_pair(destRect.x, y);
-
-    if (Board::occupied[position] == nullptr && Board::isInsideBoard(position))
-    {
-        moves.emplace_back(position);
-    }
-}
-
 void Pawn::addSquares(const char *chessSquare, int sign)
 {
-    addSquareIfNotOccupied(destRect.y + sign * Board::height);
+    addSquareIfNotOccupied(std::make_pair(destRect.x,
+                                          destRect.y + sign * Board::height));
+
     if (destRect.y == Board::getPosition(chessSquare).second)
     {
-        addSquareIfNotOccupied(destRect.y + sign * 2 * Board::height);
+        addSquareIfNotOccupied(std::make_pair(destRect.x,
+                                              destRect.y + sign * 2 * Board::height));
     }
 }
 
@@ -68,18 +61,9 @@ void Pawn::addTakingMove(const PieceColor &piecesDown)
 
 void Pawn::addTakingMove(int sign)
 {
-    auto position1 = std::make_pair(destRect.x - Board::width, destRect.y + sign *  Board::height);
-    auto position2 = std::make_pair(destRect.x + Board::width, destRect.y + sign *  Board::height);
+    auto position1 = std::make_pair(destRect.x - Board::width, destRect.y + sign * Board::height);
+    auto position2 = std::make_pair(destRect.x + Board::width, destRect.y + sign * Board::height);
 
     addSquareIfOccupied(position1);
     addSquareIfOccupied(position2);
-}
-
-void Pawn::addSquareIfOccupied(const std::pair<int, int> &position)
-{
-    Piece *piece = Board::occupied[position];
-    if (piece && piece->getPieceColor() != color)
-    {
-        moves.emplace_back(position);
-    }
 }

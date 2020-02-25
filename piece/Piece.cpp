@@ -90,6 +90,23 @@ void Piece::insertMoves(bool *direction, const int *indices1, const int *indices
     }
 }
 
+void Piece::addSquareIfNotOccupied(const std::pair<int, int> &position)
+{
+    if (Board::occupied[position] == nullptr && Board::isInsideBoard(position))
+    {
+        moves.emplace_back(position);
+    }
+}
+
+void Piece::addSquareIfOccupied(const std::pair<int, int> &position)
+{
+    Piece *p = Board::occupied[position];
+    if (p && p->getPieceColor() != color)
+    {
+        moves.emplace_back(position);
+    }
+}
+
 
 Pieces::Pieces()
 {

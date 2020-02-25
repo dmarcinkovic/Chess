@@ -57,6 +57,21 @@ protected:
      */
     void insertMoves(bool *direction, const int *indices1, const int *indices2, int size);
 
+    /**
+     * Method that adds square as an available square if it is not occupied.
+     *
+     * @param position Position of chess square.
+     */
+    void addSquareIfNotOccupied(const std::pair<int,int> &position);
+
+    /**
+    * Method to add square to list of available squares if is occupied
+    * by piece of opposite color.
+    *
+    * @param position Position of chess square to be added.
+    */
+    void addSquareIfOccupied(const std::pair<int,int> &position);
+
 public:
 
     /**
