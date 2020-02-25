@@ -22,7 +22,6 @@ Piece::Piece(int x, int y, PieceColor color)
 
 void Piece::draw() const
 {
-    if (mark) markAvailableMoves();
     SDL_RenderCopy(Game::renderer, piece, &srcRect, &destRect);
 }
 
@@ -107,7 +106,7 @@ void Piece::addSquareIfOccupied(const std::pair<int, int> &position)
     }
 }
 
-bool Piece::isCorrectMove(int x, int y)
+bool Piece::isCorrectMove(int x, int y) const
 {
     return moves.contains(Board::getAlignedPosition(x, y));
 }
@@ -137,6 +136,11 @@ Pieces::Pieces()
 
 void Pieces::draw() const
 {
+    for (auto &piece : pieces)
+    {
+        if (piece->mark) piece->markAvailableMoves();
+    }
+
     for (auto &piece : pieces)
     {
         piece->draw();

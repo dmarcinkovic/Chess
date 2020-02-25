@@ -143,7 +143,7 @@ public:
      * @param y Current y position of the piece.
      * @return True if move is correct.
      */
-    bool isCorrectMove(int x, int y);
+    bool isCorrectMove(int x, int y) const;
 
     /**
      * Method used to return to previous move.
