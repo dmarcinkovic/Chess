@@ -44,11 +44,13 @@ void Game::handleEvents()
             running = false;
             break;
         case SDL_MOUSEBUTTONDOWN :
-            eventManager->mousePressed(pieces->getPiece(
-                    event.button.x, event.button.y), event);
+            if (event.button.button == SDL_BUTTON_LEFT)
+                eventManager->mousePressed(pieces->getPiece(
+                        event.button.x, event.button.y), event);
             break;
         case SDL_MOUSEBUTTONUP :
-            eventManager->mouseReleased(event, pieces.get());
+            if (event.button.button == SDL_BUTTON_LEFT)
+                eventManager->mouseReleased(event, pieces.get());
             break;
         case SDL_MOUSEMOTION :
             eventManager->mouseMoved(event);
