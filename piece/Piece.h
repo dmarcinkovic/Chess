@@ -54,10 +54,8 @@ protected:
      * @param indices1 X coordinates.
      * @param indices2 Y coordinates.
      * @param size Size of arrays.
-     * @param w Width of chess square.
-     * @param h Height of chess square.
      */
-    void insertMoves(bool *direction, const int *indices1, const int *indices2, int size, int w, int h);
+    void insertMoves(bool *direction, const int *indices1, const int *indices2, int size);
 
 public:
 

@@ -20,11 +20,5 @@ void Bishop::getAvailableMoves()
     constexpr const int indices2[] = {1, -1, 1, -1};
 
     moves.emplace_back(std::make_pair(destRect.x, destRect.y));
-    for (int i = 1; i < Board::numberOfSquares; i++)
-    {
-        int w = i * Board::width;
-        int h = i * Board::height;
-
-        insertMoves(direction, indices1, indices2, 4, w, h);
-    }
+    insertMoves(direction, indices1, indices2, 4);
 }

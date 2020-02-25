@@ -59,27 +59,33 @@ PieceColor Piece::getPieceColor() const
     return color;
 }
 
-void Piece::insertMoves(bool *direction, const int *indices1, const int *indices2, int size, int w, int h)
+void Piece::insertMoves(bool *direction, const int *indices1, const int *indices2, int size)
 {
-    for (int j = 0; j < size; j++)
+    for (int i = 1; i < Board::numberOfSquares; i++)
     {
-        auto position = std::make_pair(destRect.x + indices1[j] * w, destRect.y + indices2[j] * h);
-        if (!direction[j] || !Board::isInsideBoard(position))
-        {
-            continue;
-        }
+        int w = i * Board::width;
+        int h = i * Board::height;
 
-        Piece *p = Board::occupied[position];
-        if (p == nullptr)
+        for (int j = 0; j < size; j++)
         {
-            moves.emplace_back(position);
-        } else if (p->getPieceColor() != color)
-        {
-            moves.emplace_back(position);
-            direction[j] = false;
-        } else
-        {
-            direction[j] = false;
+            auto position = std::make_pair(destRect.x + indices1[j] * w, destRect.y + indices2[j] * h);
+            if (!direction[j] || !Board::isInsideBoard(position))
+            {
+                continue;
+            }
+
+            Piece *p = Board::occupied[position];
+            if (p == nullptr)
+            {
+                moves.emplace_back(position);
+            } else if (p->getPieceColor() != color)
+            {
+                moves.emplace_back(position);
+                direction[j] = false;
+            } else
+            {
+                direction[j] = false;
+            }
         }
     }
 }
