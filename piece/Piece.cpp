@@ -35,9 +35,6 @@ void Piece::setPosition(int x, int y)
 void Piece::alignPiece(int x, int y)
 {
     auto result = Board::getAlignedPosition(x, y);
-
-    prevDestRect = destRect;
-
     destRect.x = result.first;
     destRect.y = result.second;
 }
@@ -123,6 +120,11 @@ void Piece::returnMove()
 std::pair<int, int> Piece::getPosition() const
 {
     return std::make_pair(destRect.x, destRect.y);
+}
+
+void Piece::updateMove()
+{
+    prevDestRect = destRect;
 }
 
 

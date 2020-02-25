@@ -151,6 +151,11 @@ public:
     void returnMove();
 
     /**
+     * Update previous piece position.
+     */
+    void updateMove();
+
+    /**
      * Returns current position of the piece.
      *
      * @return Current piece position.

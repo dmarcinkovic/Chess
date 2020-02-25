@@ -10,6 +10,7 @@ void EventManager::mousePressed(Piece *pressedPiece, const SDL_Event &event)
     {
         piece = pressedPiece;
         piece->setMarkMoves(true);
+        piece->updateMove();
         Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = nullptr;
     }
 }
