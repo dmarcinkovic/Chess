@@ -227,7 +227,33 @@ public:
      */
     void takePiece(const std::pair<int, int> &position);
 
+    /**
+     * Method checks if king is under attack.
+     *
+     * @return True if king is under attack. Otherwise returns
+     * false.
+     */
     bool isCheck();
+
+    /**
+     * Method checks if stalemate occurs on the board.
+     * Stalemate is a situation in the game of chess where the
+     * player whose turn it is to move is not in check but has
+     * no legal move.
+     *
+     * @return True if stalemate occurs on the board.
+     */
+    bool isStalemate();
+
+    /**
+     * Method checks if checkmate occurs on the board.
+     * Checkmate is a situation in the game of chess where
+     * the player whose turn it is to move is in check and has
+     * legal move.
+     *
+     * @return True if checkmate occurs on the board.
+     */
+    bool isCheckmate();
 
 };
 

@@ -54,7 +54,6 @@ void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
 {
     piece->alignPiece(event.button.x, event.button.y);
     pieces->takePiece(piece->getPosition());
-
     Board::occupied[piece->getPosition()] = piece;
     pieces->getAvailableMoves();
 

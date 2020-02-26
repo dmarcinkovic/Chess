@@ -229,3 +229,15 @@ bool Pieces::isCheck()
     return false;
 }
 
+bool Pieces::isStalemate()
+{
+    // TODO implement
+    return false;
+}
+
+bool Pieces::isCheckmate()
+{
+    // TODO implement
+    return false;
+}
+
