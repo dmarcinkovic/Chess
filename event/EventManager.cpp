@@ -4,11 +4,11 @@
 
 #include "EventManager.h"
 
-void EventManager::mousePressed(const std::shared_ptr<Piece> &pressedPiece, const SDL_Event &event)
+void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event)
 {
-    if (pressedPiece && Game::turn == pressedPiece->getPieceColor())
+    if (pressedPiece && Game::turn == (*pressedPiece)->getPieceColor())
     {
-        piece = pressedPiece;
+        piece = *pressedPiece;
         piece->setMarkMoves(true);
         piece->updateMove();
         Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = nullptr;

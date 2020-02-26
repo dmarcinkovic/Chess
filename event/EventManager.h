@@ -33,7 +33,13 @@ private:
     static void switchTurn();
 
 
-    void correctMove(const SDL_Event &event, Pieces *pieces;
+    /**
+     * Method that is executed when user makes correct move.
+     *
+     * @param event Mouse event.
+     * @param pieces Pointer to pieces class.
+     */
+    void correctMove(const SDL_Event &event, Pieces *pieces);
 
 public:
 
@@ -43,12 +49,13 @@ public:
      * @param pressedPiece Pressed piece.
      * @param event Reference to event.
      */
-    void mousePressed(const std::shared_ptr<Piece>& pressedPiece, const SDL_Event &event);
+    void mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event);
 
     /**
      * Mouse released event.
      *
      * @param event Reference to event.
+     * @param pieces Pointer to pieces class.
      */
     void mouseReleased(const SDL_Event &event, Pieces *pieces);
 
