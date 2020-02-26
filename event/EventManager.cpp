@@ -27,13 +27,7 @@ void EventManager::mouseReleased(const SDL_Event &event, Pieces *pieces)
             Board::occupied[piece->getPosition()] = piece;
         } else
         {
-            piece->alignPiece(event.button.x, event.button.y);
-            pieces->takePiece(piece->getPosition());
-
-            Board::occupied[piece->getPosition()] = piece;
-
-            pieces->getAvailableMoves();
-            switchTurn();
+            correctMove(event, pieces);
         }
     }
 
@@ -54,4 +48,15 @@ void EventManager::mouseMoved(const SDL_Event &event)
 void EventManager::switchTurn()
 {
     Game::turn = Game::turn == PieceColor::WHITE ? PieceColor::BLACK : PieceColor::WHITE;
+}
+
+void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
+{
+    piece->alignPiece(event.button.x, event.button.y);
+    pieces->takePiece(piece->getPosition());
+
+    Board::occupied[piece->getPosition()] = piece;
+
+    pieces->getAvailableMoves();
+    switchTurn();
 }

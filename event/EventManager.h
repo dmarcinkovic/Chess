@@ -32,6 +32,9 @@ private:
      */
     static void switchTurn();
 
+
+    void correctMove(const SDL_Event &event, Pieces *pieces;
+
 public:
 
     /**
