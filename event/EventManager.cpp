@@ -58,14 +58,7 @@ void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
     Board::occupied[piece->getPosition()] = piece;
     pieces->getAvailableMoves();
 
-    if (pieces->isCheck())
-    {
-        Board::occupied[piece->getPosition()] = nullptr;
-        incorrectMove();
-        pieces->getAvailableMoves();
-
-        return;
-    }
+    handleCheck(pieces);
 
     switchTurn();
 }
@@ -74,4 +67,16 @@ void EventManager::incorrectMove()
 {
     piece->returnMove();
     Board::occupied[piece->getPosition()] = piece;
+}
+
+void EventManager::handleCheck(Pieces* pieces)
+{
+    if (pieces->isCheck())
+    {
+        Board::occupied[piece->getPosition()] = nullptr;
+        incorrectMove();
+        pieces->getAvailableMoves();
+
+        switchTurn();
+    }
 }

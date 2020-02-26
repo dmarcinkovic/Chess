@@ -40,7 +40,17 @@ private:
      */
     void correctMove(const SDL_Event &event, Pieces *pieces);
 
+    /**
+     * Method called when user made invalid move.
+     */
     void incorrectMove();
+
+    /**
+     *  Method that checks if king is under attack.
+     *  If king is under attack, it checks if user
+     *  moved the king or cover the king.
+     */
+    void handleCheck(Pieces* pieces);
 
 public:
 
