@@ -25,10 +25,10 @@ void Pawn::getAvailableMoves()
 
 void Pawn::addSquares(const char *chessSquare, int sign)
 {
-    addSquareIfNotOccupied(std::make_pair(destRect.x,
-                                          destRect.y + sign * Board::height));
+    auto position = std::make_pair(destRect.x,destRect.y + sign * Board::height);
+    addSquareIfNotOccupied(position);
 
-    if (destRect.y == Board::getPosition(chessSquare).second)
+    if (destRect.y == Board::getPosition(chessSquare).second && !Board::occupied[position])
     {
         addSquareIfNotOccupied(std::make_pair(destRect.x,
                                               destRect.y + sign * 2 * Board::height));
