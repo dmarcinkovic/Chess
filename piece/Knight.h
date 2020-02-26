@@ -23,7 +23,7 @@ public:
      * @param y Y position of knight.
      * @param color Piece color.
      */
-    Knight(int x, int y, PieceColor color);
+    Knight(int x, int y, const PieceColor &color);
 
     void getAvailableMoves() override;
 };

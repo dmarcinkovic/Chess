@@ -23,7 +23,7 @@ public:
      * @param y Y position of chess king.
      * @param color Piece color.
      */
-    King(int x, int y, PieceColor color);
+    King(int x, int y, const PieceColor &color);
 
     void getAvailableMoves() override;
 };

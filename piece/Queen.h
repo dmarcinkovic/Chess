@@ -37,7 +37,7 @@ public:
      * @param y Y position of chess queen.
      * @param color Piece color.
      */
-    Queen(int x, int y, PieceColor color);
+    Queen(int x, int y, const PieceColor &color);
 
     void getAvailableMoves() override;
 };

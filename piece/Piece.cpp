@@ -8,7 +8,7 @@
 int Piece::width, Piece::height;
 SDL_Texture *Piece::piece;
 
-Piece::Piece(int x, int y, PieceColor color)
+Piece::Piece(int x, int y, const PieceColor &color)
         : color(color)
 {
     if (piece == nullptr)
@@ -147,14 +147,14 @@ void Pieces::draw() const
     }
 }
 
-std::shared_ptr<Piece> Pieces::getPiece(int x, int y)
+std::shared_ptr<Piece> *Pieces::getPiece(int x, int y)
 {
     for (auto &piece: pieces)
     {
         if (piece->destRect.x < x && piece->destRect.x + piece->destRect.w > x
             && piece->destRect.y < y && piece->destRect.y + piece->destRect.h > y)
         {
-            return piece;
+            return &piece;
         }
     }
 

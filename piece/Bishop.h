@@ -24,7 +24,7 @@ public:
      * @param y Y position of bishop.
      * @param color Piece color.
      */
-    Bishop(int x, int y, PieceColor color);
+    Bishop(int x, int y, const PieceColor &color);
 
     void getAvailableMoves() override;
 };

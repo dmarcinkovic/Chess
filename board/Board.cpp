@@ -69,9 +69,7 @@ bool Board::isInsideBoard(const std::pair<int, int> &position)
 
 std::pair<int, int> Board::getAlignedPosition(int x, int y)
 {
-    std::pair<int, int> alignedPosition = std::make_pair(
+    return std::make_pair(
             static_cast<int>(std::floor((x - paddingX) / width) * width + paddingX),
             static_cast<int>(std::floor((y - paddingY) / height) * height + paddingY));
-
-    return alignedPosition;
 }

@@ -81,7 +81,7 @@ public:
      * @param y Y position of chess piece.
      * @param color Piece color. Black or white.
      */
-    Piece(int x, int y, PieceColor color);
+    Piece(int x, int y, const PieceColor &color);
 
     /**
      * Default constructor.
@@ -214,10 +214,16 @@ public:
      * @param y Y coordinate.
      * @return Returns piece under x and y coordinate.
      */
-    std::shared_ptr<Piece> getPiece(int x, int y);
+    std::shared_ptr<Piece> *getPiece(int x, int y);
 
     void getAvailableMoves() override;
 
+    /**
+     * Method checks if current move is taking move.
+     * If so, it deletes taken piece from list of pieces.
+     *
+     * @param position Current piece position.
+     */
     void takePiece(const std::pair<int, int> &position);
 
 };

@@ -23,7 +23,7 @@ public:
      * @param y Y position of chess rook.
      * @param color Piece color.
      */
-    Rook(int x, int y, PieceColor color);
+    Rook(int x, int y, const PieceColor &color);
 
     void getAvailableMoves() override;
 };

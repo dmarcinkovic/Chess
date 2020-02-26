@@ -3,9 +3,8 @@
 //
 
 #include "King.h"
-#include "Rook.h"
 
-King::King(int x, int y, PieceColor color) : Piece(x, y, color)
+King::King(int x, int y, const PieceColor &color) : Piece(x, y, color)
 {
     srcRect = SDL_Rect{0, color == PieceColor::WHITE ?
                           0 : height / 2, width / 6, height / 2};
