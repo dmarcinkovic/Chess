@@ -41,6 +41,8 @@ private:
      */
     void correctMove(const SDL_Event &event, Pieces *pieces);
 
+    void incorrectMove();
+
 public:
 
     /**

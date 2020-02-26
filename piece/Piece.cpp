@@ -4,6 +4,8 @@
 
 #include "Piece.h"
 #include "../factory/Util.h"
+#include "King.h"
+#include "Bishop.h"
 
 int Piece::width, Piece::height;
 SDL_Texture *Piece::piece;
@@ -206,5 +208,24 @@ void Pieces::takePiece(const std::pair<int, int> &position)
         auto iterator = std::find(pieces.begin(), pieces.end(), piece);
         pieces.erase(iterator);
     }
+}
+
+bool Pieces::isCheck()
+{
+    for (auto &piece: pieces)
+    {
+        if (piece->color == Game::turn) continue;
+
+        for (auto &square : piece->moves)
+        {
+            auto currentPiece = Board::occupied[square];
+
+            if (dynamic_cast<King *>(currentPiece.get()))
+            {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 

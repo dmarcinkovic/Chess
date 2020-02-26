@@ -11,6 +11,7 @@ void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, cons
         piece = *pressedPiece;
         piece->setMarkMoves(true);
         piece->updateMove();
+
         Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = nullptr;
     }
 }
@@ -23,8 +24,7 @@ void EventManager::mouseReleased(const SDL_Event &event, Pieces *pieces)
 
         if (!piece->isCorrectMove(event.button.x, event.button.y))
         {
-            piece->returnMove();
-            Board::occupied[piece->getPosition()] = piece;
+            incorrectMove();
         } else
         {
             correctMove(event, pieces);
@@ -56,7 +56,22 @@ void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
     pieces->takePiece(piece->getPosition());
 
     Board::occupied[piece->getPosition()] = piece;
-
     pieces->getAvailableMoves();
+
+    if (pieces->isCheck())
+    {
+        Board::occupied[piece->getPosition()] = nullptr;
+        incorrectMove();
+        piece->getAvailableMoves();
+
+        return;
+    }
+
     switchTurn();
+}
+
+void EventManager::incorrectMove()
+{
+    piece->returnMove();
+    Board::occupied[piece->getPosition()] = piece;
 }

@@ -194,6 +194,7 @@ private:
      */
     inline constexpr void addBlackPieces();
 
+
 public:
 
     /**
@@ -225,6 +226,8 @@ public:
      * @param position Current piece position.
      */
     void takePiece(const std::pair<int, int> &position);
+
+    bool isCheck();
 
 };
 
