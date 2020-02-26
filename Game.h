@@ -36,7 +36,7 @@ private:
     bool running;
 
     std::unique_ptr<Board> board;
-    std::unique_ptr<Pieces> pieces;
+    std::shared_ptr<Pieces> pieces;
 
     std::unique_ptr<EventManager> eventManager = std::make_unique<EventManager>();
 

@@ -18,14 +18,13 @@ Game::Game(const char *title, int w, int h)
                               SDL_WINDOWPOS_CENTERED_MASK, w, h, false);
 
     renderer = SDL_CreateRenderer(window, -1, false);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     width = w;
     height = h;
 
     board = std::make_unique<Board>(width, height);
 
-    pieces = std::make_unique<Pieces>();
+    pieces = std::make_shared<Pieces>();
     pieces->getAvailableMoves();
 }
 
