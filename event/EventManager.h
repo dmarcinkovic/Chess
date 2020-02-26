@@ -5,7 +5,7 @@
 #ifndef CHESS_EVENTMANAGER_H
 #define CHESS_EVENTMANAGER_H
 
-
+#include <memory>
 #include "../piece/Piece.h"
 
 /**
@@ -25,7 +25,7 @@ class EventManager
 private:
     bool liftedPiece;
 
-    Piece *piece;
+    std::shared_ptr<Piece> piece;
 
     /**
      * Method used to switch turn.
@@ -40,7 +40,7 @@ public:
      * @param pressedPiece Pressed piece.
      * @param event Reference to event.
      */
-    void mousePressed(Piece *pressedPiece, const SDL_Event &event);
+    void mousePressed(const std::shared_ptr<Piece>& pressedPiece, const SDL_Event &event);
 
     /**
      * Mouse released event.

@@ -7,6 +7,8 @@
 
 #include <SDL2/SDL.h>
 #include <unordered_map>
+#include <memory>
+
 #include "../Game.h"
 
 #include "../piece/Piece.h"
@@ -53,7 +55,7 @@ public:
     /**
      * Map that stores all pieces.
      */
-    static std::unordered_map<std::pair<int, int>, Piece *, PairHash> occupied;
+    static std::unordered_map<std::pair<int, int>, std::shared_ptr<Piece>, PairHash> occupied;
 
     /**
      * Initialize board.

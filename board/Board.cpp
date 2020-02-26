@@ -12,7 +12,7 @@ int Board::numberOfSquares = 8;
 
 bool Board::flipped = false;
 
-std::unordered_map<std::pair<int, int>, Piece*, PairHash> Board::occupied;
+std::unordered_map<std::pair<int, int>, std::shared_ptr<Piece>, PairHash> Board::occupied;
 
 Board::Board(int w, int h)
 {

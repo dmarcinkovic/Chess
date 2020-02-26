@@ -37,7 +37,7 @@ public:
      * @param pieceColor Piece color. White or black.
      * @return New chess piece.
      */
-    static std::unique_ptr<Piece> getPiece(PieceType type, int x, int y, const PieceColor &pieceColor);
+    static std::shared_ptr<Piece> getPiece(PieceType type, int x, int y, const PieceColor &pieceColor);
 };
 
 

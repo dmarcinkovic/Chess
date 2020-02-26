@@ -4,7 +4,7 @@
 
 #include "EventManager.h"
 
-void EventManager::mousePressed(Piece *pressedPiece, const SDL_Event &event)
+void EventManager::mousePressed(const std::shared_ptr<Piece> &pressedPiece, const SDL_Event &event)
 {
     if (pressedPiece && Game::turn == pressedPiece->getPieceColor())
     {
@@ -28,7 +28,9 @@ void EventManager::mouseReleased(const SDL_Event &event, Pieces *pieces)
         } else
         {
             piece->alignPiece(event.button.x, event.button.y);
-            Board::occupied[Board::getAlignedPosition(event.button.x, event.button.y)] = piece;
+            pieces->takePiece(piece->getPosition());
+
+            Board::occupied[piece->getPosition()] = piece;
 
             pieces->getAvailableMoves();
             switchTurn();

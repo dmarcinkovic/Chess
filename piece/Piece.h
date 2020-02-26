@@ -177,7 +177,7 @@ public:
 class Pieces : public Piece
 {
 private:
-    std::vector<std::unique_ptr<Piece>> pieces;
+    std::vector<std::shared_ptr<Piece>> pieces;
 
     /**
      * Method to add pieces to the board.
@@ -214,9 +214,11 @@ public:
      * @param y Y coordinate.
      * @return Returns piece under x and y coordinate.
      */
-    Piece *getPiece(int x, int y);
+    std::shared_ptr<Piece> getPiece(int x, int y);
 
     void getAvailableMoves() override;
+
+    void takePiece(const std::pair<int, int> &position);
 
 };
 

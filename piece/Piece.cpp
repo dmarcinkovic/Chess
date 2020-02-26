@@ -73,7 +73,7 @@ void Piece::insertMoves(bool *direction, const int *indices1, const int *indices
                 continue;
             }
 
-            Piece *p = Board::occupied[position];
+            auto p = Board::occupied[position];
             if (p == nullptr)
             {
                 moves.insert(position);
@@ -99,7 +99,7 @@ void Piece::addSquareIfNotOccupied(const std::pair<int, int> &position)
 
 void Piece::addSquareIfOccupied(const std::pair<int, int> &position)
 {
-    Piece *p = Board::occupied[position];
+    auto p = Board::occupied[position];
     if (p && p->getPieceColor() != color)
     {
         moves.insert(position);
@@ -147,14 +147,14 @@ void Pieces::draw() const
     }
 }
 
-Piece *Pieces::getPiece(int x, int y)
+std::shared_ptr<Piece> Pieces::getPiece(int x, int y)
 {
     for (auto &piece: pieces)
     {
         if (piece->destRect.x < x && piece->destRect.x + piece->destRect.w > x
             && piece->destRect.y < y && piece->destRect.y + piece->destRect.h > y)
         {
-            return piece.get();
+            return piece;
         }
     }
 
@@ -182,7 +182,7 @@ constexpr void Pieces::addWhitePieces()
         auto[x, y] = Board::getPosition(square);
         pieces.emplace_back(PieceFactory::getPiece(
                 ChessSquares::getPieceType(square), x, y, PieceColor::WHITE));
-        Board::occupied[std::make_pair(x, y)] = pieces.back().get();
+        Board::occupied[std::make_pair(x, y)] = pieces.back();
     }
 }
 
@@ -193,7 +193,18 @@ constexpr void Pieces::addBlackPieces()
         auto[x, y] = Board::getPosition(square);
         pieces.emplace_back(PieceFactory::getPiece(
                 ChessSquares::getPieceType(square), x, y, PieceColor::BLACK));
-        Board::occupied[std::make_pair(x, y)] = pieces.back().get();
+        Board::occupied[std::make_pair(x, y)] = pieces.back();
+    }
+}
+
+void Pieces::takePiece(const std::pair<int, int> &position)
+{
+    std::shared_ptr<Piece> piece{Board::occupied[position]};
+    if (piece)
+    {
+        Board::occupied[piece->getPosition()] = nullptr;
+        auto iterator = std::find(pieces.begin(), pieces.end(), piece);
+        pieces.erase(iterator);
     }
 }
 
