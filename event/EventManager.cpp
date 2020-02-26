@@ -62,7 +62,7 @@ void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
     {
         Board::occupied[piece->getPosition()] = nullptr;
         incorrectMove();
-        piece->getAvailableMoves();
+        pieces->getAvailableMoves();
 
         return;
     }

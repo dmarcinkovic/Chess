@@ -32,7 +32,6 @@ private:
      */
     static void switchTurn();
 
-
     /**
      * Method that is executed when user makes correct move.
      *
