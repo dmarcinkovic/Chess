@@ -50,8 +50,12 @@ private:
      *  If king is under attack, it checks if user
      *  moved the king or cover the king.
      */
-    void handleCheck(Pieces* pieces);
+    void handleCheck(Pieces *pieces);
 
+    /**
+     * Method checks if current move is castle move.
+     * If so, then it performs castle.
+     */
     void castle();
 
 public:
