@@ -5,7 +5,6 @@
 #include "Piece.h"
 #include "../factory/Util.h"
 #include "King.h"
-#include "Bishop.h"
 
 int Piece::width, Piece::height;
 SDL_Texture *Piece::piece;

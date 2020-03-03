@@ -166,7 +166,6 @@ public:
      * Allow Pieces class access to all members of this class.
      */
     friend class Pieces;
-
 };
 
 /**

@@ -14,6 +14,18 @@
  */
 class King : public Piece
 {
+private:
+
+    void addCastleMove();
+
+    std::pair<int, int> getSquare(char col);
+
+    bool checkSquaresInBetween(int numberOfSquares, char col);
+
+    void checkKingAndRook(char rookPosition, char newKingPosition);
+
+    void addCastleMove(int numberOfSquares, char col, char rookPosition, char newKingPosition);
+
 public:
 
     /**
