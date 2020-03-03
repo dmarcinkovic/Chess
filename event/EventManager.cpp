@@ -3,6 +3,7 @@
 //
 
 #include "EventManager.h"
+#include "../piece/King.h"
 
 void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event)
 {
@@ -57,6 +58,7 @@ void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
     Board::occupied[piece->getPosition()] = piece;
     pieces->getAvailableMoves();
 
+    castle();
     handleCheck(pieces);
 
     switchTurn();
@@ -77,5 +79,15 @@ void EventManager::handleCheck(Pieces* pieces)
         pieces->getAvailableMoves();
 
         switchTurn();
+    }
+}
+
+void EventManager::castle()
+{
+    King *king = dynamic_cast<King*>(piece.get());
+
+    if (king && king->isCastleMove())
+    {
+        king->castle();
     }
 }

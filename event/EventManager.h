@@ -52,6 +52,8 @@ private:
      */
     void handleCheck(Pieces* pieces);
 
+    void castle();
+
 public:
 
     /**

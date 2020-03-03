@@ -74,3 +74,26 @@ void King::addCastleMove(int numberOfSquares, char col, char rookPosition, char 
     }
 }
 
+bool King::isCastleMove() const
+{
+    return std::abs(destRect.x - prevDestRect.x) == 2 * Board::width;
+}
+
+void King::castle()
+{
+    destRect.x == Board::getPosition("c1").first ?
+    castle('a', 'd') :
+    castle('h', 'f');
+}
+
+void King::castle(char rookPosition, char newRookPosition)
+{
+    auto currentRookPosition = getSquare(rookPosition);
+    auto rook = Board::occupied[currentRookPosition];
+    Board::occupied[currentRookPosition] = nullptr;
+
+    auto rookSquare = getSquare(newRookPosition);
+    rook->alignPiece(rookSquare.first, rookSquare.second);
+    Board::occupied[rookSquare] = rook;
+}
+

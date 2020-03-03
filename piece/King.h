@@ -60,6 +60,15 @@ private:
      */
     void addCastleMove(int numberOfSquares, char col, char rookPosition, char newKingPosition);
 
+    /**
+     * Helper method to perform castle. Moves rook from current position
+     * to new position.
+     *
+     * @param rookPosition Current rook position.
+     * @param newRookPosition New rook position.
+     */
+    void castle(char rookPosition, char newRookPosition);
+
 public:
 
     /**
@@ -72,6 +81,18 @@ public:
     King(int x, int y, const PieceColor &color);
 
     void getAvailableMoves() override;
+
+    /**
+     * Checks if current move is castle move.
+     *
+     * @return True if current move is castle move.
+     */
+    bool isCastleMove() const;
+
+    /**
+     * Method performs castle.
+     */
+    void castle();
 };
 
 
