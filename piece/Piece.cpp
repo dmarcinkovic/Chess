@@ -214,12 +214,9 @@ bool Pieces::isCheck()
     for (auto &piece: pieces)
     {
         if (piece->color == Game::turn) continue;
-
         for (auto &square : piece->moves)
         {
-            auto currentPiece = Board::occupied[square];
-
-            if (dynamic_cast<King *>(currentPiece.get()))
+            if (dynamic_cast<King *>(Board::occupied[square].get()))
             {
                 return true;
             }
