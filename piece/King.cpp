@@ -6,7 +6,7 @@
 #include "Rook.h"
 
 King::King(int x, int y, const PieceColor &color)
-        : Piece(x, y, color), moved(false)
+        : Piece(x, y, color)
 {
     srcRect = SDL_Rect{0, color == PieceColor::WHITE ?
                           0 : height / 2, width / 6, height / 2};
