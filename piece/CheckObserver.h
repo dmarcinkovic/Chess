@@ -29,7 +29,7 @@ public:
 
 /**
  * One concrete listener.
- * 
+ *
  * @author David
  */
 class CheckObserver : public ICheckObserver
