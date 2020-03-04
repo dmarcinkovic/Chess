@@ -20,3 +20,4 @@ void Bishop::getAvailableMoves()
 
     insertMoves(direction, indices1, indices2, 4);
 }
+

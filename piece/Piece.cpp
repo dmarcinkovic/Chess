@@ -127,6 +127,41 @@ void Piece::updateMove()
     prevDestRect = destRect;
 }
 
+void Piece::findIntersection(Piece *attackingPiece)
+{
+    std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
+
+    for (auto const &move : attackingPiece->moves)
+    {
+        for (auto const &currentMove : moves)
+        {
+            if (move == currentMove)
+            {
+                newMoves.insert(move);
+            }
+        }
+    }
+
+    addTakingMove(attackingPiece, newMoves);
+    moves = newMoves;
+}
+
+void Piece::addTakingMove(Piece *attackingPiece, std::unordered_set<std::pair<int, int>, PairHash> &newMoves)
+{
+    for (auto const &move : moves)
+    {
+        if (move == std::make_pair(attackingPiece->destRect.x, attackingPiece->destRect.y))
+        {
+            newMoves.insert(move);
+            break;
+        }
+    }
+}
+
+void Piece::getAvailableMovesCheck(Piece *attackingPiece)
+{
+    findIntersection(attackingPiece);
+}
 
 Pieces::Pieces()
 {
@@ -211,18 +246,21 @@ void Pieces::takePiece(const std::pair<int, int> &position)
 
 bool Pieces::isCheck()
 {
+    pieceAttackKing.clear();
+
     for (auto &piece: pieces)
     {
-        if (piece->color == Game::turn) continue;
+        if (piece->color != Game::turn) continue;
         for (auto &square : piece->moves)
         {
             if (dynamic_cast<King *>(Board::occupied[square].get()))
             {
-                return true;
+                pieceAttackKing.emplace_back(piece.get());
             }
         }
     }
-    return false;
+
+    return !pieceAttackKing.empty();
 }
 
 bool Pieces::isStalemate()
@@ -235,5 +273,17 @@ bool Pieces::isCheckmate()
 {
     // TODO implement
     return false;
+}
+
+void Pieces::addObserver(ICheckObserver *observer)
+{
+    observers.emplace_back(observer);
+}
+
+void Pieces::notifyAll(Pieces *pieces1)
+{
+    std::for_each(observers.begin(), observers.end(), [&](ICheckObserver *observer) {
+        observer->update(pieces1);
+    });
 }
 

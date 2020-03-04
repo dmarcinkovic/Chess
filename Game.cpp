@@ -24,8 +24,11 @@ Game::Game(const char *title, int w, int h)
 
     board = std::make_unique<Board>(width, height);
 
-    pieces = std::make_shared<Pieces>();
+    pieces  = std::make_shared<Pieces>();
     pieces->getAvailableMoves();
+
+    checkObserver = std::make_unique<CheckObserver>();
+    pieces->addObserver(checkObserver.get());
 }
 
 Game::~Game()

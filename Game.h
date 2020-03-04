@@ -11,13 +11,14 @@
 #include "board/Board.h"
 #include "piece/Piece.h"
 #include "event/EventManager.h"
+#include "piece/CheckObserver.h"
 
-/**
- * Predeclaration of pieces class.
- */
 class Pieces;
 
 class EventManager;
+
+class CheckObserver;
+class ICheckObserver;
 
 class Board;
 
@@ -39,6 +40,7 @@ private:
     std::shared_ptr<Pieces> pieces;
 
     std::unique_ptr<EventManager> eventManager = std::make_unique<EventManager>();
+    std::unique_ptr<ICheckObserver> checkObserver;
 
 public:
     static SDL_Renderer *renderer;

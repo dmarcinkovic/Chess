@@ -97,3 +97,8 @@ void King::castle(char rookPosition, char newRookPosition)
     Board::occupied[rookSquare] = rook;
 }
 
+void King::getAvailableMovesCheck(Piece *attackingPiece)
+{
+
+}
+

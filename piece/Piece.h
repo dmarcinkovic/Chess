@@ -12,6 +12,7 @@
 #include "../texture/Texture.h"
 #include "../Game.h"
 #include "../pair/PairHash.h"
+#include "CheckObserver.h"
 
 /**
  * Enum that represents piece color.
@@ -32,14 +33,15 @@ enum class PieceColor
 class Piece
 {
 protected:
-    static int width, height;
-    static SDL_Texture *piece;
 
+    static int width, height;
+
+    static SDL_Texture *piece;
     SDL_Rect srcRect{}, destRect{}, prevDestRect{};
 
     PieceColor color;
-    bool mark{};
 
+    bool mark{};
     std::unordered_set<std::pair<int, int>, PairHash> moves;
 
     /**
@@ -72,6 +74,10 @@ protected:
     */
     void addSquareIfOccupied(const std::pair<int, int> &position);
 
+    void findIntersection(Piece *attackingPiece);
+
+    void addTakingMove(Piece *attackingPiece, std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
+
 public:
 
     /**
@@ -98,6 +104,8 @@ public:
      *
      */
     virtual void getAvailableMoves() = 0;
+
+    virtual void getAvailableMovesCheck(Piece *attackingPiece);
 
     /**
      * Returns piece color.
@@ -168,6 +176,8 @@ public:
     friend class Pieces;
 };
 
+class ICheckObserver;
+
 /**
  * Composite class that is used to manage all pieces.
  *
@@ -177,6 +187,10 @@ class Pieces : public Piece
 {
 private:
     std::vector<std::shared_ptr<Piece>> pieces;
+
+    std::vector<ICheckObserver *> observers;
+
+    std::vector<Piece*> pieceAttackKing;
 
     /**
      * Method to add pieces to the board.
@@ -192,7 +206,6 @@ private:
      * Method to add black piece to the board.
      */
     inline constexpr void addBlackPieces();
-
 
 public:
 
@@ -226,6 +239,10 @@ public:
      */
     void takePiece(const std::pair<int, int> &position);
 
+    void addObserver(ICheckObserver *observer);
+
+    void notifyAll(Pieces *pieces1);
+
     /**
      * Method checks if king is under attack.
      *
@@ -253,6 +270,8 @@ public:
      * @return True if checkmate occurs on the board.
      */
     bool isCheckmate();
+
+    friend class CheckObserver;
 
 };
 

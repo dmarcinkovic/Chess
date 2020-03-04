@@ -74,11 +74,8 @@ void EventManager::handleCheck(Pieces* pieces)
 {
     if (pieces->isCheck())
     {
-        Board::occupied[piece->getPosition()] = nullptr;
-        incorrectMove();
         pieces->getAvailableMoves();
-
-        switchTurn();
+        pieces->notifyAll(pieces);
     }
 }
 

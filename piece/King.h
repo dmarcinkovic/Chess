@@ -93,6 +93,8 @@ public:
      * Method performs castle.
      */
     void castle();
+
+    void getAvailableMovesCheck(Piece *attackingPiece) override;
 };
 
 
