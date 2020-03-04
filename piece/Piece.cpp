@@ -127,33 +127,29 @@ void Piece::updateMove()
     prevDestRect = destRect;
 }
 
-void Piece::findIntersection(const std::shared_ptr<Piece> &attackingPiece)
+bool Piece::findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces,
+                             const std::pair<int, int> &move)
 {
-    std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
-
-    for (auto const &move : attackingPiece->moves)
+    for (auto const &attackingPiece : attackingPieces)
     {
-        for (auto const &currentMove : moves)
+        for (auto const &pieceMove : attackingPiece->moves)
         {
-            if (move == currentMove)
+            if (move == pieceMove)
             {
-                newMoves.insert(move);
+                return true;
             }
         }
     }
-
-    addTakingMove(attackingPiece, newMoves);
-    moves = newMoves;
+    return false;
 }
 
-void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
-                          std::unordered_set<std::pair<int, int>, PairHash> &newMoves)
+void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece)
 {
     for (auto const &move : moves)
     {
         if (move == std::make_pair(attackingPiece->destRect.x, attackingPiece->destRect.y))
         {
-            newMoves.insert(move);
+            moves.insert(move);
             break;
         }
     }
@@ -161,7 +157,17 @@ void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
 
 void Piece::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces)
 {
-    findIntersection(attackingPieces[0]);
+    std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
+    for (auto const &move : moves)
+    {
+        if (findIntersection(attackingPieces, move))
+        {
+            newMoves.insert(move);
+        }
+    }
+
+    moves = newMoves;
+    addTakingMove(attackingPieces[0]);
 }
 
 Pieces::Pieces()

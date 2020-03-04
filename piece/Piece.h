@@ -41,10 +41,8 @@ private:
      * to take that bishop.
      *
      * @param attackingPiece Piece that is causing check.
-     * @param newMoves Set of new available moves for this piece.
      */
-    void addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
-                       std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
+    void addTakingMove(const std::shared_ptr<Piece> &attackingPiece);
 
 protected:
     static int width, height;
@@ -90,9 +88,12 @@ protected:
     /**
      * Method finds common moves of this piece and attacking piece.
      *
-     * @param attackingPiece Piece that is causing check.
+     * @param attackingPieces One or more pieces that are causing check.
+     * @param move Move to find intersection.
+     * @return True if given move has common square with at least one attacking piece.
      */
-    void findIntersection(const std::shared_ptr<Piece> &attackingPiece);
+    static bool findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces,
+                          const std::pair<int, int> &move);
 
 public:
 
