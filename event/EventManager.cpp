@@ -70,7 +70,7 @@ void EventManager::incorrectMove()
     Board::occupied[piece->getPosition()] = piece;
 }
 
-void EventManager::handleCheck(Pieces* pieces)
+void EventManager::handleCheck(Pieces *pieces)
 {
     if (pieces->isCheck())
     {
@@ -80,7 +80,7 @@ void EventManager::handleCheck(Pieces* pieces)
 
 void EventManager::castle()
 {
-    King *king = dynamic_cast<King*>(piece.get());
+    King *king = dynamic_cast<King *>(piece.get());
 
     if (king && king->isCastleMove())
     {

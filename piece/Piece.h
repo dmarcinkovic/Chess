@@ -43,7 +43,8 @@ private:
      * @param attackingPiece Piece that is causing check.
      * @param newMoves Set of new available moves for this piece.
      */
-    void addTakingMove(Piece *attackingPiece, std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
+    void addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
+                       std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
 
 protected:
     static int width, height;
@@ -89,9 +90,9 @@ protected:
     /**
      * Method finds common moves of this piece and attacking piece.
      *
-     * @param attackingPiece Piece that is causing check.
+     * @param attackingPieces One or more pieces that are causing check.
      */
-    void findIntersection(Piece *attackingPiece);
+    void findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces);
 
 public:
 
@@ -124,9 +125,9 @@ public:
      * Method used to find available squares for all pieces when
      * check has occurred on the board.
      *
-     * @param attackingPiece Piece that is causing check.
+     * @param attackingPieces One or more pieces that are causing check.
      */
-    virtual void getAvailableMovesCheck(Piece *attackingPiece);
+    virtual void getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces);
 
     /**
      * Returns piece color.
@@ -211,7 +212,7 @@ private:
 
     std::vector<ICheckObserver *> observers;
 
-    std::vector<Piece *> pieceAttackKing;
+    std::vector<std::shared_ptr<Piece>> pieceAttackKing;
 
     /**
      * Method to add pieces to the board.

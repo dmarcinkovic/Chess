@@ -16,9 +16,9 @@ void King::getAvailableMoves()
 {
     moves.clear();
 
-    for (int i = -1; i <= 1; i++)
+    for (int i = -1; i <= 1; ++i)
     {
-        for (int j = -1; j <= 1; j++)
+        for (int j = -1; j <= 1; ++j)
         {
             if (i == 0 && j == 0) continue;
 
@@ -46,7 +46,7 @@ std::pair<int, int> King::getSquare(char col)
 
 bool King::checkSquaresInBetween(int numberOfSquares, char col)
 {
-    for (int i = 0; i < numberOfSquares; i++)
+    for (int i = 0; i < numberOfSquares; ++i)
     {
         if (Board::occupied[getSquare((char) ((int) col + i))])
         {
@@ -97,8 +97,17 @@ void King::castle(char rookPosition, char newRookPosition)
     Board::occupied[rookSquare] = rook;
 }
 
-void King::getAvailableMovesCheck(Piece *attackingPiece)
+void King::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces)
 {
+    std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
 
+    for (auto const &move : moves)
+    {
+        if (!Board::occupied[move])
+        {
+            newMoves.insert(move);
+        }
+    }
+    moves = newMoves;
 }
 

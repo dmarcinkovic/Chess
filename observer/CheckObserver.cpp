@@ -15,7 +15,6 @@ void CheckObserver::update(Pieces *pieces)
             continue;
         }
 
-        piece->getAvailableMovesCheck(pieces->pieceAttackKing[0]);
+        piece->getAvailableMovesCheck(pieces->pieceAttackKing);
     }
 }
-

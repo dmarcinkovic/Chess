@@ -8,9 +8,6 @@
 #include <memory>
 #include "../piece/Piece.h"
 
-/**
- * Predeclaration of Piece class.
- */
 class Piece;
 
 class Pieces;

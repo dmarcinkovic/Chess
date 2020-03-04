@@ -18,6 +18,7 @@ class Pieces;
 class EventManager;
 
 class CheckObserver;
+
 class ICheckObserver;
 
 class Board;

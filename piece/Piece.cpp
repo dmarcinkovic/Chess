@@ -61,12 +61,12 @@ PieceColor Piece::getPieceColor() const
 
 void Piece::insertMoves(bool *direction, const int *indices1, const int *indices2, int size)
 {
-    for (int i = 1; i < Board::numberOfSquares; i++)
+    for (int i = 1; i < Board::numberOfSquares; ++i)
     {
         int w = i * Board::width;
         int h = i * Board::height;
 
-        for (int j = 0; j < size; j++)
+        for (int j = 0; j < size; ++j)
         {
             auto position = std::make_pair(destRect.x + indices1[j] * w, destRect.y + indices2[j] * h);
             if (!direction[j] || !Board::isInsideBoard(position))
@@ -127,11 +127,11 @@ void Piece::updateMove()
     prevDestRect = destRect;
 }
 
-void Piece::findIntersection(Piece *attackingPiece)
+void Piece::findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces)
 {
     std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
 
-    for (auto const &move : attackingPiece->moves)
+    for (auto const &move : attackingPieces[0]->moves)
     {
         for (auto const &currentMove : moves)
         {
@@ -142,11 +142,12 @@ void Piece::findIntersection(Piece *attackingPiece)
         }
     }
 
-    addTakingMove(attackingPiece, newMoves);
+    addTakingMove(attackingPieces[0], newMoves);
     moves = newMoves;
 }
 
-void Piece::addTakingMove(Piece *attackingPiece, std::unordered_set<std::pair<int, int>, PairHash> &newMoves)
+void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
+                          std::unordered_set<std::pair<int, int>, PairHash> &newMoves)
 {
     for (auto const &move : moves)
     {
@@ -158,9 +159,9 @@ void Piece::addTakingMove(Piece *attackingPiece, std::unordered_set<std::pair<in
     }
 }
 
-void Piece::getAvailableMovesCheck(Piece *attackingPiece)
+void Piece::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces)
 {
-    findIntersection(attackingPiece);
+    findIntersection(attackingPieces);
 }
 
 Pieces::Pieces()
@@ -172,12 +173,12 @@ Pieces::Pieces()
 
 void Pieces::draw() const
 {
-    for (auto &piece : pieces)
+    for (auto const &piece : pieces)
     {
         if (piece->mark) piece->markAvailableMoves();
     }
 
-    for (auto &piece : pieces)
+    for (auto const &piece : pieces)
     {
         piece->draw();
     }
@@ -205,7 +206,7 @@ constexpr void Pieces::addPieces()
 
 void Pieces::getAvailableMoves()
 {
-    for (auto &piece : pieces)
+    for (auto const &piece : pieces)
     {
         piece->getAvailableMoves();
     }
@@ -213,7 +214,7 @@ void Pieces::getAvailableMoves()
 
 constexpr void Pieces::addWhitePieces()
 {
-    for (auto &square : ChessSquares::getWhitePieces())
+    for (auto const &square : ChessSquares::getWhitePieces())
     {
         auto[x, y] = Board::getPosition(square);
         pieces.emplace_back(PieceFactory::getPiece(
@@ -224,7 +225,7 @@ constexpr void Pieces::addWhitePieces()
 
 constexpr void Pieces::addBlackPieces()
 {
-    for (auto &square : ChessSquares::getBlackPieces())
+    for (auto const &square : ChessSquares::getBlackPieces())
     {
         auto[x, y] = Board::getPosition(square);
         pieces.emplace_back(PieceFactory::getPiece(
@@ -248,14 +249,14 @@ bool Pieces::isCheck()
 {
     pieceAttackKing.clear();
 
-    for (auto &piece: pieces)
+    for (auto const &piece: pieces)
     {
         if (piece->color != Game::turn) continue;
-        for (auto &square : piece->moves)
+        for (auto const &square : piece->moves)
         {
             if (dynamic_cast<King *>(Board::occupied[square].get()))
             {
-                pieceAttackKing.emplace_back(piece.get());
+                pieceAttackKing.emplace_back(piece);
             }
         }
     }
