@@ -74,7 +74,6 @@ void EventManager::handleCheck(Pieces* pieces)
 {
     if (pieces->isCheck())
     {
-        pieces->getAvailableMoves();
         pieces->notifyAll(pieces);
     }
 }

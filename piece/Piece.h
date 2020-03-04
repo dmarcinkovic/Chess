@@ -32,8 +32,20 @@ enum class PieceColor
  */
 class Piece
 {
-protected:
+private:
 
+    /**
+     * Method used to add taking move to set of available
+     * moves. For example, lets say that white gave check with
+     * his bishop on b5. Then this method checks if it is possible
+     * to take that bishop.
+     *
+     * @param attackingPiece Piece that is causing check.
+     * @param newMoves Set of new available moves for this piece.
+     */
+    void addTakingMove(Piece *attackingPiece, std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
+
+protected:
     static int width, height;
 
     static SDL_Texture *piece;
@@ -74,9 +86,12 @@ protected:
     */
     void addSquareIfOccupied(const std::pair<int, int> &position);
 
+    /**
+     * Method finds common moves of this piece and attacking piece.
+     *
+     * @param attackingPiece Piece that is causing check.
+     */
     void findIntersection(Piece *attackingPiece);
-
-    void addTakingMove(Piece *attackingPiece, std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
 
 public:
 
@@ -105,6 +120,12 @@ public:
      */
     virtual void getAvailableMoves() = 0;
 
+    /**
+     * Method used to find available squares for all pieces when
+     * check has occurred on the board.
+     *
+     * @param attackingPiece Piece that is causing check.
+     */
     virtual void getAvailableMovesCheck(Piece *attackingPiece);
 
     /**
@@ -190,7 +211,7 @@ private:
 
     std::vector<ICheckObserver *> observers;
 
-    std::vector<Piece*> pieceAttackKing;
+    std::vector<Piece *> pieceAttackKing;
 
     /**
      * Method to add pieces to the board.
@@ -239,8 +260,18 @@ public:
      */
     void takePiece(const std::pair<int, int> &position);
 
+    /**
+     * Subscribe to an interested observer to listen to check event.
+     *
+     * @param observer An event listener.
+     */
     void addObserver(ICheckObserver *observer);
 
+    /**
+     *  Notify all interested observers that event has occurred.
+     *
+     * @param pieces1 Pointer to all pieces.
+     */
     void notifyAll(Pieces *pieces1);
 
     /**
@@ -271,6 +302,9 @@ public:
      */
     bool isCheckmate();
 
+    /**
+     * Friend class. It has access to all private members of this class.
+     */
     friend class CheckObserver;
 
 };
