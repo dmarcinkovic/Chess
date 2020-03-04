@@ -108,10 +108,11 @@ void King::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &att
             newMoves.insert(move);
         } else if (Board::occupied[move])
         {
-            // Occupied by opponent's piece
-            // TODO check if that piece is protected by another piece
-            // TODO and if it is not than that is valid move. Otherwise not.
-            newMoves.insert(move);
+            auto piece = Board::occupied[move];
+            if (!piece->protectedPiece)
+            {
+                newMoves.insert(move);
+            }
         }
     }
     moves = newMoves;

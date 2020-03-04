@@ -96,6 +96,7 @@ protected:
                                  const std::pair<int, int> &move);
 
 public:
+    bool protectedPiece{};
 
     /**
      * Creates new chess piece.
