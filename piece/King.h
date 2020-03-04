@@ -69,6 +69,8 @@ private:
      */
     void castle(char rookPosition, char newRookPosition);
 
+
+
 public:
 
     /**

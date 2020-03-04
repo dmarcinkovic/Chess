@@ -90,9 +90,9 @@ protected:
     /**
      * Method finds common moves of this piece and attacking piece.
      *
-     * @param attackingPieces One or more pieces that are causing check.
+     * @param attackingPiece Piece that is causing check.
      */
-    void findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces);
+    void findIntersection(const std::shared_ptr<Piece> &attackingPiece);
 
 public:
 
