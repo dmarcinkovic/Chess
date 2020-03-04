@@ -278,14 +278,19 @@ bool Pieces::isCheck()
 
 bool Pieces::isStalemate()
 {
-    // TODO implement
-    return false;
+    int totalNumberOfAvailableMoves = 0;
+
+    for (auto const& piece : pieces)
+    {
+        totalNumberOfAvailableMoves += piece->moves.size();
+    }
+
+    return totalNumberOfAvailableMoves > 0;
 }
 
 bool Pieces::isCheckmate()
 {
-    // TODO implement
-    return false;
+    return isStalemate() && !pieceAttackKing.empty();
 }
 
 void Pieces::addObserver(ICheckObserver *observer)
