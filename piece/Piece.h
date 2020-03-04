@@ -12,7 +12,7 @@
 #include "../texture/Texture.h"
 #include "../Game.h"
 #include "../pair/PairHash.h"
-#include "CheckObserver.h"
+#include "../observer/CheckObserver.h"
 
 /**
  * Enum that represents piece color.

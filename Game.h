@@ -11,7 +11,7 @@
 #include "board/Board.h"
 #include "piece/Piece.h"
 #include "event/EventManager.h"
-#include "piece/CheckObserver.h"
+#include "observer/CheckObserver.h"
 
 class Pieces;
 

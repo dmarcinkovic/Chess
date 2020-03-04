@@ -5,7 +5,7 @@
 #ifndef CHESS_CHECKOBSERVER_H
 #define CHESS_CHECKOBSERVER_H
 
-#include "Piece.h"
+#include "../piece/Piece.h"
 
 class Pieces;
 
