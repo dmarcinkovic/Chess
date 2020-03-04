@@ -157,6 +157,12 @@ void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece)
 
 void Piece::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces)
 {
+    if (attackingPieces.size() > 1)
+    {
+        moves.clear();
+        return;
+    }
+
     std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
     for (auto const &move : moves)
     {

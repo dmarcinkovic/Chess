@@ -93,7 +93,7 @@ protected:
      * @return True if given move has common square with at least one attacking piece.
      */
     static bool findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces,
-                          const std::pair<int, int> &move);
+                                 const std::pair<int, int> &move);
 
 public:
 
