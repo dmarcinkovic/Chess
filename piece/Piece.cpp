@@ -226,6 +226,11 @@ constexpr void Pieces::addPieces()
 
 void Pieces::getAvailableMoves()
 {
+    for (auto const& piece : pieces)
+    {
+        piece->protectedPiece = false;
+    }
+
     for (auto const &piece : pieces)
     {
         piece->getAvailableMoves();
