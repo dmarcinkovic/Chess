@@ -109,7 +109,7 @@ void King::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &att
         } else if (Board::occupied[move])
         {
             auto piece = Board::occupied[move];
-            if (!piece->protectedPiece)
+            if (!piece->isProtectedPiece())
             {
                 newMoves.insert(move);
             }

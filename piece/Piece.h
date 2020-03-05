@@ -53,6 +53,8 @@ protected:
     PieceColor color;
 
     bool mark{};
+    bool protectedPiece{};
+
     std::unordered_set<std::pair<int, int>, PairHash> moves;
 
     /**
@@ -96,7 +98,6 @@ protected:
                                  const std::pair<int, int> &move);
 
 public:
-    bool protectedPiece{};
 
     /**
      * Creates new chess piece.
@@ -193,6 +194,18 @@ public:
      * @return Current piece position.
      */
     std::pair<int, int> getPosition() const;
+
+    /**
+     * Setts this piece as protected piece.
+     */
+    void setProtectedPiece();
+
+    /**
+     * Returns true if this piece is protected.
+     *
+     * @return True if piece is protected.
+     */
+    bool isProtectedPiece() const;
 
     /**
      * Allow Pieces class access to all members of this class.

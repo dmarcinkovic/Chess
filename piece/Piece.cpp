@@ -84,7 +84,7 @@ void Piece::insertMoves(bool *direction, const int *indices1, const int *indices
                 direction[j] = false;
             } else if (p->getPieceColor() == color)
             {
-                p->protectedPiece = true;
+                p->setProtectedPiece();
                 direction[j] = false;
             } else
             {
@@ -110,7 +110,7 @@ void Piece::addSquareIfOccupied(const std::pair<int, int> &position)
         moves.insert(position);
     } else if (p)
     {
-        p->protectedPiece = true;
+        p->setProtectedPiece();
     }
 }
 
@@ -181,6 +181,16 @@ void Piece::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &at
 
     moves = newMoves;
     addTakingMove(attackingPieces[0]);
+}
+
+void Piece::setProtectedPiece()
+{
+    protectedPiece = true;
+}
+
+bool Piece::isProtectedPiece() const
+{
+    return protectedPiece;
 }
 
 
