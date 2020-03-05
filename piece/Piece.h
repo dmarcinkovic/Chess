@@ -41,8 +41,10 @@ private:
      * to take that bishop.
      *
      * @param attackingPiece Piece that is causing check.
+     * @param newMoves Set of new available moves.
      */
-    void addTakingMove(const std::shared_ptr<Piece> &attackingPiece);
+    void addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
+                       std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
 
 protected:
     static int width, height;

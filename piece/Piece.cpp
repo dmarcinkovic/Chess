@@ -150,13 +150,14 @@ bool Piece::findIntersection(const std::vector<std::shared_ptr<Piece>> &attackin
     return false;
 }
 
-void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece)
+void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
+                          std::unordered_set<std::pair<int, int>, PairHash> &newMoves)
 {
     for (auto const &move : moves)
     {
         if (move == std::make_pair(attackingPiece->destRect.x, attackingPiece->destRect.y))
         {
-            moves.insert(move);
+            newMoves.insert(move);
             break;
         }
     }
@@ -179,8 +180,8 @@ void Piece::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &at
         }
     }
 
+    addTakingMove(attackingPieces[0], newMoves);
     moves = newMoves;
-    addTakingMove(attackingPieces[0]);
 }
 
 void Piece::setProtectedPiece()
@@ -236,7 +237,7 @@ constexpr void Pieces::addPieces()
 
 void Pieces::getAvailableMoves()
 {
-    for (auto const& piece : pieces)
+    for (auto const &piece : pieces)
     {
         piece->protectedPiece = false;
     }
