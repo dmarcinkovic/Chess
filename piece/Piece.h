@@ -32,20 +32,6 @@ enum class PieceColor
  */
 class Piece
 {
-private:
-
-    /**
-     * Method used to add taking move to set of available
-     * moves. For example, lets say that white gave check with
-     * his bishop on b5. Then this method checks if it is possible
-     * to take that bishop.
-     *
-     * @param attackingPiece Piece that is causing check.
-     * @param newMoves Set of new available moves.
-     */
-    void addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
-                       std::unordered_set<std::pair<int, int>, PairHash> &newMoves);
-
 protected:
     static int width, height;
 
@@ -55,7 +41,6 @@ protected:
     PieceColor color;
 
     bool mark{};
-    bool protectedPiece{};
 
     std::unordered_set<std::pair<int, int>, PairHash> moves;
 
@@ -89,16 +74,6 @@ protected:
     */
     void addSquareIfOccupied(const std::pair<int, int> &position);
 
-    /**
-     * Method finds common moves of this piece and attacking piece.
-     *
-     * @param attackingPieces One or more pieces that are causing check.
-     * @param move Move to find intersection.
-     * @return True if given move has common square with at least one attacking piece.
-     */
-    static bool findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces,
-                                 const std::pair<int, int> &move);
-
 public:
 
     /**
@@ -125,14 +100,6 @@ public:
      *
      */
     virtual void getAvailableMoves() = 0;
-
-    /**
-     * Method used to find available squares for all pieces when
-     * check has occurred on the board.
-     *
-     * @param attackingPieces One or more pieces that are causing check.
-     */
-    virtual void getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces);
 
     /**
      * Returns piece color.
@@ -198,18 +165,6 @@ public:
     std::pair<int, int> getPosition() const;
 
     /**
-     * Setts this piece as protected piece.
-     */
-    void setProtectedPiece();
-
-    /**
-     * Returns true if this piece is protected.
-     *
-     * @return True if piece is protected.
-     */
-    bool isProtectedPiece() const;
-
-    /**
      * Allow Pieces class access to all members of this class.
      */
     friend class Pieces;
@@ -228,8 +183,6 @@ private:
     std::vector<std::shared_ptr<Piece>> pieces;
 
     std::vector<ICheckObserver *> observers;
-
-    std::vector<std::shared_ptr<Piece>> pieceAttackKing;
 
     /**
      * Method to add pieces to the board.

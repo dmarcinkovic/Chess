@@ -96,26 +96,3 @@ void King::castle(char rookPosition, char newRookPosition)
     rook->alignPiece(rookSquare.first, rookSquare.second);
     Board::occupied[rookSquare] = rook;
 }
-
-void King::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces)
-{
-    std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
-
-    for (auto const &move : moves)
-    {
-        if (!Board::occupied[move] && !findIntersection(attackingPieces, move))
-        {
-            newMoves.insert(move);
-        } else if (Board::occupied[move])
-        {
-            auto piece = Board::occupied[move];
-            if (!piece->isProtectedPiece())
-            {
-                newMoves.insert(move);
-            }
-        }
-    }
-
-    moves = std::move(newMoves);
-}
-

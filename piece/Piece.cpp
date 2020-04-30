@@ -82,10 +82,6 @@ void Piece::insertMoves(bool *direction, const int *indices1, const int *indices
             {
                 moves.insert(position);
                 direction[j] = false;
-            } else if (p->getPieceColor() == color)
-            {
-                p->setProtectedPiece();
-                direction[j] = false;
             } else
             {
                 direction[j] = false;
@@ -108,9 +104,6 @@ void Piece::addSquareIfOccupied(const std::pair<int, int> &position)
     if (p && p->getPieceColor() != color)
     {
         moves.insert(position);
-    } else if (p)
-    {
-        p->setProtectedPiece();
     }
 }
 
@@ -133,67 +126,6 @@ void Piece::updateMove()
 {
     prevDestRect = destRect;
 }
-
-bool Piece::findIntersection(const std::vector<std::shared_ptr<Piece>> &attackingPieces,
-                             const std::pair<int, int> &move)
-{
-    for (auto const &attackingPiece : attackingPieces)
-    {
-        for (auto const &pieceMove : attackingPiece->moves)
-        {
-            if (move == pieceMove)
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-void Piece::addTakingMove(const std::shared_ptr<Piece> &attackingPiece,
-                          std::unordered_set<std::pair<int, int>, PairHash> &newMoves)
-{
-    for (auto const &move : moves)
-    {
-        if (move == std::make_pair(attackingPiece->destRect.x, attackingPiece->destRect.y))
-        {
-            newMoves.insert(move);
-            break;
-        }
-    }
-}
-
-void Piece::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces)
-{
-    if (attackingPieces.size() > 1)
-    {
-        moves.clear();
-        return;
-    }
-
-    std::unordered_set<std::pair<int, int>, PairHash> newMoves{};
-    for (auto const &move : moves)
-    {
-        if (findIntersection(attackingPieces, move))
-        {
-            newMoves.insert(move);
-        }
-    }
-
-    addTakingMove(attackingPieces[0], newMoves);
-    moves = std::move(newMoves);
-}
-
-void Piece::setProtectedPiece()
-{
-    protectedPiece = true;
-}
-
-bool Piece::isProtectedPiece() const
-{
-    return protectedPiece;
-}
-
 
 Pieces::Pieces()
 {
@@ -239,11 +171,6 @@ void Pieces::getAvailableMoves()
 {
     for (auto const &piece : pieces)
     {
-        piece->protectedPiece = false;
-    }
-
-    for (auto const &piece : pieces)
-    {
         piece->getAvailableMoves();
     }
 }
@@ -283,8 +210,6 @@ void Pieces::takePiece(const std::pair<int, int> &position)
 
 bool Pieces::isCheck()
 {
-    pieceAttackKing.clear();
-
     for (auto const &piece: pieces)
     {
         if (piece->color != Game::turn) continue;
@@ -292,12 +217,12 @@ bool Pieces::isCheck()
         {
             if (dynamic_cast<King *>(Board::occupied[square].get()))
             {
-                pieceAttackKing.emplace_back(piece);
+                return true;
             }
         }
     }
 
-    return !pieceAttackKing.empty();
+    return false;
 }
 
 bool Pieces::isStalemate()
@@ -314,7 +239,7 @@ bool Pieces::isStalemate()
 
 bool Pieces::isCheckmate()
 {
-    return isStalemate() && !pieceAttackKing.empty();
+    return isStalemate() && isCheck();
 }
 
 void Pieces::addObserver(ICheckObserver *observer)
@@ -328,4 +253,3 @@ void Pieces::notifyAll(Pieces *pieces1)
         observer->update(pieces1);
     });
 }
-

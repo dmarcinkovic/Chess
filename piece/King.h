@@ -93,8 +93,6 @@ public:
      * Method performs castle.
      */
     void castle();
-
-    void getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &attackingPieces) override;
 };
 
 

@@ -13,6 +13,6 @@ void CheckObserver::update(Pieces *pieces)
             continue;
         }
 
-        piece->getAvailableMovesCheck(pieces->pieceAttackKing);
+        // TODO update moves because it is check
     }
 }
