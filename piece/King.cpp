@@ -115,6 +115,7 @@ void King::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &att
             }
         }
     }
-    moves = newMoves;
+
+    moves = std::move(newMoves);
 }
 

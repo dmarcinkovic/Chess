@@ -12,8 +12,10 @@ Knight::Knight(int x, int y, const PieceColor &color) : Piece(x, y, color)
 
 void Knight::getAvailableMoves()
 {
-    constexpr std::array<int, 8> indices1 = {-2, 2, -2, 2, -1, 1, -1, 1};
-    constexpr std::array<int, 8> indices2 = {1, 1, -1, -1, 2, 2, -2, -2};
+    constexpr std::array<int, 8> indices1 = {-2, 2, -2, 2,
+                                             -1, 1, -1, 1};
+    constexpr std::array<int, 8> indices2 = {1, 1, -1, -1,
+                                             2, 2, -2, -2};
 
     moves.clear();
 
