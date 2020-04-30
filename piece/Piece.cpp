@@ -181,7 +181,7 @@ void Piece::getAvailableMovesCheck(const std::vector<std::shared_ptr<Piece>> &at
     }
 
     addTakingMove(attackingPieces[0], newMoves);
-    moves = newMoves;
+    moves = std::move(newMoves);
 }
 
 void Piece::setProtectedPiece()

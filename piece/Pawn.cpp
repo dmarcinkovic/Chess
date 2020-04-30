@@ -14,13 +14,7 @@ void Pawn::getAvailableMoves()
 {
     moves.clear();
 
-    if (!Board::flipped)
-    {
-        addSquares(PieceColor::WHITE);
-    } else
-    {
-        addSquares(PieceColor::BLACK);
-    }
+    !Board::flipped ? addSquares(PieceColor::WHITE) : addSquares(PieceColor::BLACK);
 }
 
 void Pawn::addSquares(const char *chessSquare, int sign)
@@ -37,25 +31,9 @@ void Pawn::addSquares(const char *chessSquare, int sign)
 
 void Pawn::addSquares(const PieceColor &piecesDown)
 {
-    addTakingMove(piecesDown);
-    if (color == piecesDown)
-    {
-        addSquares("a2", -1);
-    } else
-    {
-        addSquares("a7", 1);
-    }
-}
+    piecesDown == color ? addTakingMove(-1) : addTakingMove(1);
 
-void Pawn::addTakingMove(const PieceColor &piecesDown)
-{
-    if (piecesDown == color)
-    {
-        addTakingMove(-1);
-    } else
-    {
-        addTakingMove(1);
-    }
+    color == piecesDown ? addSquares("a2", -1) : addSquares("a7", 1);
 }
 
 void Pawn::addTakingMove(int sign)

@@ -33,13 +33,6 @@ private:
     void addSquares(const PieceColor &piecesDown);
 
     /**
-     * Add available taking moves to list of all available moves.
-     *
-     * @param piecesDown Color of pieces that are down. White if board is not flipped.
-     */
-    void addTakingMove(const PieceColor &piecesDown);
-
-    /**
      * Add taking move according to position on the board.
      * -1 if piece is down (by default white pieces). Otherwise sign is 1.
      *
