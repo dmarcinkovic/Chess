@@ -6,13 +6,5 @@
 
 void CheckObserver::update(Pieces *pieces)
 {
-    for (auto &piece : pieces->pieces)
-    {
-        if (piece->getPieceColor() == Game::turn)
-        {
-            continue;
-        }
-
-        // TODO update moves because it is check
-    }
+    pieces->update();
 }

@@ -278,6 +278,9 @@ public:
      */
     friend class CheckObserver;
 
+
+    void update();
+
 };
 
 

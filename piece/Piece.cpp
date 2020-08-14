@@ -249,7 +249,39 @@ void Pieces::addObserver(ICheckObserver *observer)
 
 void Pieces::notifyAll(Pieces *pieces1)
 {
-    std::for_each(observers.begin(), observers.end(), [&](ICheckObserver *observer) {
+    std::for_each(observers.begin(), observers.end(), [&](ICheckObserver *observer)
+    {
         observer->update(pieces1);
     });
+}
+
+void Pieces::update()
+{
+    for (auto &piece : pieces)
+    {
+        if (piece->getPieceColor() != Game::turn)
+        {
+            std::unordered_set<std::pair<int, int>, PairHash> result{};
+            std::pair<int, int> position = {piece->destRect.x, piece->destRect.y};
+
+            Board::occupied[position] = nullptr;
+            for (auto &move : piece->moves)
+            {
+                piece->setPosition(move.first, move.second);
+                Board::occupied[move] = piece;
+
+                if (!isCheck())
+                {
+                    result.insert(move);
+                }
+
+                Board::occupied[move] = nullptr;
+                piece->setPosition(position.first + +piece->destRect.w / 2,
+                                   position.second + +piece->destRect.h / 2);
+            }
+            Board::occupied[position] = piece;
+
+            piece->moves = std::move(result);
+        }
+    }
 }
