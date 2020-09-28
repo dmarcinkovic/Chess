@@ -73,3 +73,16 @@ std::pair<int, int> Board::getAlignedPosition(int x, int y)
             static_cast<int>(std::floor((x - paddingX) / width) * width + paddingX),
             static_cast<int>(std::floor((y - paddingY) / height) * height + paddingY));
 }
+
+bool Board::isWhiteSquare(const std::pair<int, int> &squarePos)
+{
+    int row = static_cast<int>((squarePos.second - paddingY) / height);
+    int col = static_cast<int>((squarePos.first - paddingX) / width);
+
+    if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
+    {
+        return true;
+    }
+
+    return false;
+}

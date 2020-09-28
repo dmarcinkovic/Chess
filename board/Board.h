@@ -105,6 +105,14 @@ public:
      * @return Aligned position of chess square for given position.
      */
     static std::pair<int, int> getAlignedPosition(int x, int y);
+
+    /**
+     * Method checks is the given square is white or black.
+     *
+     * @param squarePos Position of the square.
+     * @return True if the square is white, otherwise returns false.
+     */
+    static bool isWhiteSquare(const std::pair<int, int> &squarePos);
 };
 
 

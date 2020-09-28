@@ -44,7 +44,9 @@ void Piece::markAvailableMoves() const
     for (auto &position : moves)
     {
         SDL_Rect rect{position.first, position.second, Board::width, Board::height};
-        SDL_SetRenderDrawColor(Game::renderer, 255, 0, 0, 255);
+        
+        int r = Board::isWhiteSquare(position) ? 255 : 200;
+        SDL_SetRenderDrawColor(Game::renderer, r, 0, 0, 255);
         SDL_RenderFillRect(Game::renderer, &rect);
     }
 }
@@ -249,8 +251,7 @@ void Pieces::addObserver(ICheckObserver *observer)
 
 void Pieces::notifyAll(Pieces *pieces1)
 {
-    std::for_each(observers.begin(), observers.end(), [&](ICheckObserver *observer)
-    {
+    std::for_each(observers.begin(), observers.end(), [&](ICheckObserver *observer) {
         observer->update(pieces1);
     });
 }
