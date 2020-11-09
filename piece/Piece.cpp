@@ -23,7 +23,7 @@ Piece::Piece(int x, int y, const PieceColor &color)
 
 void Piece::draw() const
 {
-    SDL_RenderCopy(Game::renderer, piece, &srcRect, &destRect);
+    SDL_RenderCopy(SDL_GetRenderer(Game::getWindow()), piece, &srcRect, &destRect);
 }
 
 void Piece::setPosition(int x, int y)
@@ -41,13 +41,15 @@ void Piece::alignPiece(int x, int y)
 
 void Piece::markAvailableMoves() const
 {
+	SDL_Renderer *renderer = SDL_GetRenderer(Game::getWindow());
+
     for (auto &position : moves)
     {
         SDL_Rect rect{position.first, position.second, Board::width, Board::height};
         
         int r = Board::isWhiteSquare(position) ? 255 : 200;
-        SDL_SetRenderDrawColor(Game::renderer, r, 0, 0, 255);
-        SDL_RenderFillRect(Game::renderer, &rect);
+        SDL_SetRenderDrawColor(renderer, r, 0, 0, 255);
+        SDL_RenderFillRect(renderer, &rect);
     }
 }
 

@@ -4,10 +4,8 @@
 
 #include "Game.h"
 
-SDL_Renderer *Game::renderer;
-int Game::width;
-int Game::height;
 PieceColor Game::turn = PieceColor::WHITE;
+SDL_Window *Game::window;
 
 Game::Game(const char *title, int w, int h)
         : running{true}, checkObserver(std::make_unique<CheckObserver>())
@@ -19,10 +17,7 @@ Game::Game(const char *title, int w, int h)
 
     renderer = SDL_CreateRenderer(window, -1, false);
 
-    width = w;
-    height = h;
-
-    board = std::make_unique<Board>(width, height, "resources/board.jpg");
+    board = std::make_unique<Board>(w, h, "resources/board.jpg");
 
     pieces = std::make_shared<Pieces>();
     pieces->getAvailableMoves();
@@ -79,4 +74,9 @@ void Game::draw()
     pieces->draw();
 
     SDL_RenderPresent(renderer);
+}
+
+SDL_Window *Game::getWindow()
+{
+	return window;
 }

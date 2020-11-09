@@ -12,7 +12,8 @@ SDL_Texture *Texture::loadTexture(const char *path, int &width, int &height)
     width = surface->w;
     height = surface->h;
 
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(Game::renderer, surface);
+    SDL_Renderer *renderer = SDL_GetRenderer(Game::getWindow());
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     SDL_FreeSurface(surface);
 

@@ -33,59 +33,60 @@ enum class PieceColor;
 class Game
 {
 private:
-    SDL_Window *window;
-    SDL_Event event{};
-    bool running;
+	static SDL_Window *window;
+	SDL_Renderer *renderer;
+	SDL_Event event{};
+	bool running;
 
-    std::unique_ptr<Board> board;
-    std::shared_ptr<Pieces> pieces;
+	std::unique_ptr<Board> board;
+	std::shared_ptr<Pieces> pieces;
 
-    std::unique_ptr<EventManager> eventManager = std::make_unique<EventManager>();
-    std::unique_ptr<ICheckObserver> checkObserver;
+	std::unique_ptr<EventManager> eventManager = std::make_unique<EventManager>();
+	std::unique_ptr<ICheckObserver> checkObserver;
 
 public:
-    static SDL_Renderer *renderer;
+	/**
+	 * Player turn.
+	 */
+	static PieceColor turn;
 
-    /**
-     * Player turn.
-     */
-    static PieceColor turn;
+	/**
+	 * Game constructor. It creates new window.
+	 *
+	 * @param title Title of the window.
+	 * @param w Width of the window.
+	 * @param h Height of the window.
+	 */
+	Game(const char *title, int w, int h);
 
-    /**
-     * Width and height of the window.
-     */
-    static int width, height;
+	/**
+	 * Destructor. It is used to destroy window.
+	 */
+	~Game();
 
-    /**
-     * Game constructor. It creates new window.
-     *
-     * @param title Title of the window.
-     * @param w Width of the window.
-     * @param h Height of the window.
-     */
-    Game(const char *title, int w, int h);
+	/**
+	 * Method used to handle events.
+	 */
+	void handleEvents();
 
-    /**
-     * Destructor. It is used to destroy window.
-     */
-    ~Game();
+	/**
+	 * Returns true if game if running, otherwise returns false.
+	 *
+	 * @return True if game if running, otherwise returns false.
+	 */
+	[[nodiscard]] bool isRunning() const;
 
-    /**
-     * Method used to handle events.
-     */
-    void handleEvents();
+	/**
+	 * Method used to draw all objects of the game once every frame.
+	 */
+	void draw();
 
-    /**
-     * Returns true if game if running, otherwise returns false.
-     *
-     * @return True if game if running, otherwise returns false.
-     */
-    [[nodiscard]] bool isRunning() const;
-
-    /**
-     * Method used to draw all objects of the game once every frame.
-     */
-    void draw();
+	/**
+	 * Method that returns pointer to SDL Window.
+	 *
+	 * @return Pointer to SDL Window.
+	 */
+	static SDL_Window *getWindow();
 };
 
 
