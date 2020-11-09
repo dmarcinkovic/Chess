@@ -22,7 +22,7 @@ Game::Game(const char *title, int w, int h)
     width = w;
     height = h;
 
-    board = std::make_unique<Board>(width, height);
+    board = std::make_unique<Board>(width, height, "resources/board.jpg");
 
     pieces = std::make_shared<Pieces>();
     pieces->getAvailableMoves();

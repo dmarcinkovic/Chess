@@ -14,9 +14,9 @@ bool Board::flipped = false;
 
 std::unordered_map<std::pair<int, int>, std::shared_ptr<Piece>, PairHash> Board::occupied;
 
-Board::Board(int w, int h)
+Board::Board(int w, int h, const char *boardFile)
 {
-    board = Texture::loadTexture("resources/board.jpg", srcRect.w, srcRect.h);
+    board = Texture::loadTexture(boardFile, srcRect.w, srcRect.h);
 
     destRect = SDL_Rect{0, 0, w, h};
     width = static_cast<int>(0.1163 * Game::width);
@@ -79,10 +79,5 @@ bool Board::isWhiteSquare(const std::pair<int, int> &squarePos)
     int row = static_cast<int>((squarePos.second - paddingY) / height);
     int col = static_cast<int>((squarePos.first - paddingX) / width);
 
-    if (row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1)
-    {
-        return true;
-    }
-
-    return false;
+    return row % 2 == 0 && col % 2 == 0 || row % 2 == 1 && col % 2 == 1;
 }
