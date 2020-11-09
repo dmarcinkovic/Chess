@@ -10,7 +10,7 @@ int Game::height;
 PieceColor Game::turn = PieceColor::WHITE;
 
 Game::Game(const char *title, int w, int h)
-        : running{true}
+        : running{true}, checkObserver(std::make_unique<CheckObserver>())
 {
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -26,8 +26,6 @@ Game::Game(const char *title, int w, int h)
 
     pieces = std::make_shared<Pieces>();
     pieces->getAvailableMoves();
-
-    checkObserver = std::make_unique<CheckObserver>();
     pieces->addObserver(checkObserver.get());
 }
 
