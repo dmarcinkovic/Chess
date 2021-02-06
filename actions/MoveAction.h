@@ -11,6 +11,8 @@
 class MoveAction : public Action
 {
 public:
+
+
 	void executeDo() override;
 
 	void executeUndo() override;

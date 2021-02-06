@@ -9,7 +9,7 @@
 #include <unordered_map>
 #include <memory>
 
-#include "../Game.h"
+#include "../game/Game.h"
 
 #include "../piece/Piece.h"
 #include "../pair/PairHash.h"

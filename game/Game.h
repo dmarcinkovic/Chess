@@ -8,10 +8,10 @@
 #include <SDL2/SDL.h>
 #include <memory>
 
-#include "board/Board.h"
-#include "piece/Piece.h"
-#include "event/EventManager.h"
-#include "observer/CheckObserver.h"
+#include "../board/Board.h"
+#include "../piece/Piece.h"
+#include "../event/EventManager.h"
+#include "../observer/CheckObserver.h"
 
 class Pieces;
 

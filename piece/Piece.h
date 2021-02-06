@@ -10,7 +10,7 @@
 #include <functional>
 
 #include "../texture/Texture.h"
-#include "../Game.h"
+#include "../game/Game.h"
 #include "../pair/PairHash.h"
 #include "../observer/CheckObserver.h"
 
