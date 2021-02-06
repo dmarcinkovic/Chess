@@ -3,3 +3,13 @@
 //
 
 #include "MoveAction.h"
+
+void MoveAction::executeDo()
+{
+
+}
+
+void MoveAction::executeUndo()
+{
+
+}

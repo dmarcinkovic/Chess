@@ -6,9 +6,14 @@
 #define CHESS_MOVEACTION_H
 
 
-class MoveAction
-{
+#include "Action.h"
 
+class MoveAction : public Action
+{
+public:
+	void executeDo() override;
+
+	void executeUndo() override;
 };
 
 
