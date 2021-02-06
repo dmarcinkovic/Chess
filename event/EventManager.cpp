@@ -105,6 +105,11 @@ void EventManager::undo(const std::shared_ptr<Pieces> &pieces)
 
 }
 
+void EventManager::redo(const std::shared_ptr<Pieces> &pieces)
+{
+
+}
+
 void EventManager::saveState(Pieces *pieces)
 {
 	state->pieces = pieces;

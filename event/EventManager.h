@@ -111,6 +111,14 @@ public:
      */
     void undo(const std::shared_ptr<Pieces> &pieces);
 
+    /**
+     * Function that is caled when the right arrow is pressed.
+     * Cancels redo action.
+     *
+     * @param pieces Pieces that are current on the board.
+     */
+    void redo(const std::shared_ptr<Pieces> &pieces);
+
 };
 
 
