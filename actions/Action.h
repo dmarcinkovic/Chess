@@ -8,7 +8,10 @@
 
 class Action
 {
+public:
+	virtual void executeDo() = 0;
 
+	virtual void executeUndo() = 0;
 };
 
 
