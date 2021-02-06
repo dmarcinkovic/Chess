@@ -38,4 +38,5 @@ public:
     void update(Pieces *pieces) override;
 };
 
+
 #endif //CHESS_CHECKOBSERVER_H

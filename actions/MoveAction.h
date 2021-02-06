@@ -6,12 +6,20 @@
 #define CHESS_MOVEACTION_H
 
 
+#include <vector>
+#include <memory>
+
 #include "Action.h"
+#include "../piece/Piece.h"
 
 class MoveAction : public Action
 {
-public:
+private:
+	std::vector<std::shared_ptr<Piece>> pieces;
+	Pieces *chessPieces;
 
+public:
+	explicit MoveAction(const std::shared_ptr<Pieces> &pieces);
 
 	void executeDo() override;
 
