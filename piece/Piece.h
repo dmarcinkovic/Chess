@@ -281,6 +281,12 @@ public:
 
     void update();
 
+    /**
+     * Getter for pieces
+     *
+     * @return Chess pieces
+     */
+	const std::vector<std::shared_ptr<Piece>> &getPieces() const;
 };
 
 

@@ -288,3 +288,8 @@ void Pieces::update()
         }
     }
 }
+
+const std::vector<std::shared_ptr<Piece>> &Pieces::getPieces() const
+{
+	return pieces;
+}
