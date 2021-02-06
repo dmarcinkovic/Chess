@@ -52,6 +52,10 @@ void Game::handleEvents()
 		case SDL_KEYDOWN :
 			if (event.key.keysym.sym == SDLK_f)
 				board->flip();
+			else if (event.key.keysym.sym == SDLK_LEFT)
+				eventManager->undo(pieces);
+			else if (event.key.keysym.sym == SDLK_RIGHT)
+				eventManager->redo(pieces);
 			break;
 		default:
 			break;
