@@ -4,6 +4,17 @@
 
 #include "EventManager.h"
 #include "../piece/King.h"
+#include "../actions/State.h"
+
+EventManager::EventManager()
+{
+	state = new State;
+}
+
+EventManager::~EventManager()
+{
+	delete state;
+}
 
 void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event)
 {
@@ -62,6 +73,7 @@ void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
     handleCheck(pieces);
 
     switchTurn();
+    saveState(pieces);
 }
 
 void EventManager::incorrectMove()
@@ -86,4 +98,14 @@ void EventManager::castle()
     {
         king->castle();
     }
+}
+
+void EventManager::undo(const std::shared_ptr<Pieces> &pieces)
+{
+
+}
+
+void EventManager::saveState(Pieces *pieces)
+{
+	state->pieces = pieces;
 }

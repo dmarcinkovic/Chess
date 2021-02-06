@@ -6,11 +6,15 @@
 #define CHESS_EVENTMANAGER_H
 
 #include <memory>
+
 #include "../piece/Piece.h"
+#include "../actions/State.h"
 
 class Piece;
 
 class Pieces;
+
+class State;
 
 /**
  * Class that is used to handle mouse events.
@@ -20,9 +24,11 @@ class Pieces;
 class EventManager
 {
 private:
-    bool liftedPiece;
+    bool liftedPiece{};
 
     std::shared_ptr<Piece> piece;
+
+    State *state;
 
     /**
      * Method used to switch turn.
@@ -55,7 +61,24 @@ private:
      */
     void castle();
 
+    /**
+     * Method used to save the current game state.
+     *
+     * @param pieces Current game state
+     */
+    void saveState(Pieces *pieces);
+
 public:
+
+	/**
+	 * Constructor that creates initial state.
+	 */
+	EventManager();
+
+	/**
+	 * Destructor that deletes stored state.
+	 */
+	~EventManager();
 
     /**
      * Mouse pressed event.
@@ -79,6 +102,14 @@ public:
      * @param event Reference to event.
      */
     void mouseMoved(const SDL_Event &event);
+
+    /**
+     * Function that is called when the left arrow is pressed.
+     * Cancels the last move played.
+     *
+     * @param pieces Pieces that are currently on the board.
+     */
+    void undo(const std::shared_ptr<Pieces> &pieces);
 
 };
 
