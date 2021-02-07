@@ -50,12 +50,7 @@ void Game::handleEvents()
 			eventManager->mouseMoved(event);
 			break;
 		case SDL_KEYDOWN :
-			if (event.key.keysym.sym == SDLK_f)
-				board->flip();
-			else if (event.key.keysym.sym == SDLK_LEFT)
-				eventManager->undo();
-			else if (event.key.keysym.sym == SDLK_RIGHT)
-				eventManager->redo();
+			handleKeyEvents();
 			break;
 		default:
 			break;
@@ -80,4 +75,14 @@ void Game::draw()
 SDL_Window *Game::getWindow()
 {
 	return window;
+}
+
+void Game::handleKeyEvents()
+{
+	if (event.key.keysym.sym == SDLK_f)
+		board->flip();
+	else if (event.key.keysym.sym == SDLK_LEFT)
+		eventManager->undo();
+	else if (event.key.keysym.sym == SDLK_RIGHT)
+		eventManager->redo();
 }

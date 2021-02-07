@@ -87,6 +87,9 @@ public:
 	 * @return Pointer to SDL Window.
 	 */
 	static SDL_Window *getWindow();
+
+private:
+	void handleKeyEvents();
 };
 
 
