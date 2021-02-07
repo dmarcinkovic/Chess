@@ -89,6 +89,10 @@ public:
 	static SDL_Window *getWindow();
 
 private:
+
+	/**
+	 * Handle key pressed events. 
+	 */
 	void handleKeyEvents();
 };
 
