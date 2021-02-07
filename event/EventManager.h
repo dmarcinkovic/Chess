@@ -61,7 +61,7 @@ private:
 	 *
 	 * @param pieces Current game state
 	 */
-	void saveState(const std::shared_ptr<Pieces> &pieces);
+	static void saveState(const std::shared_ptr<Pieces> &pieces);
 
 public:
 

@@ -102,5 +102,5 @@ void EventManager::redo(const std::shared_ptr<Pieces> &pieces)
 
 void EventManager::saveState(const std::shared_ptr<Pieces> &pieces)
 {
-//	UndoManager::getInstance().push(MoveAction());
+	UndoManager::getInstance().push(MoveAction(pieces));
 }
