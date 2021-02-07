@@ -266,7 +266,7 @@ public:
     /**
      * Method checks if checkmate occurs on the board.
      * Checkmate is a situation in the game of chess where
-     * the player whose turn it is to move is in check and has
+     * the player whose turn it is to move is in check and has no
      * legal move.
      *
      * @return True if checkmate occurs on the board.
@@ -278,7 +278,9 @@ public:
      */
     friend class CheckObserver;
 
-
+    /**
+     * Update game state. Updates chess pieces positions.
+     */
     void update();
 
     /**

@@ -117,7 +117,7 @@ public:
      *
      * @param pieces Pieces that are current on the board.
      */
-    void redo(const std::shared_ptr<Pieces> &pieces);
+	void redo(const std::shared_ptr<Pieces> &pieces);
 
 };
 
