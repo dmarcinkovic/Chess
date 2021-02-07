@@ -93,14 +93,14 @@ public:
 	 * Cancels the last move played.
 	 *
 	 */
-	void undo();
+	static void undo();
 
 	/**
 	 * Function that is caled when the right arrow is pressed.
 	 * Cancels redo action.
 	 *
 	 */
-	void redo();
+	static void redo();
 
 };
 

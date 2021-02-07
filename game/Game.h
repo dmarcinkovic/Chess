@@ -91,7 +91,7 @@ public:
 private:
 
 	/**
-	 * Handle key pressed events. 
+	 * Handle key pressed events.
 	 */
 	void handleKeyEvents();
 };
