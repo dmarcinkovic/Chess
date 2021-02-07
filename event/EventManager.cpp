@@ -90,14 +90,14 @@ void EventManager::castle()
 	}
 }
 
-void EventManager::undo(const std::shared_ptr<Pieces> &pieces)
+void EventManager::undo()
 {
-	std::cout << "Undo\n";
+	UndoManager::getInstance().undo();
 }
 
-void EventManager::redo(const std::shared_ptr<Pieces> &pieces)
+void EventManager::redo()
 {
-	std::cout << "Redo\n";
+	UndoManager::getInstance().redo();
 }
 
 void EventManager::saveState(const std::shared_ptr<Pieces> &pieces)

@@ -53,9 +53,9 @@ void Game::handleEvents()
 			if (event.key.keysym.sym == SDLK_f)
 				board->flip();
 			else if (event.key.keysym.sym == SDLK_LEFT)
-				eventManager->undo(pieces);
+				eventManager->undo();
 			else if (event.key.keysym.sym == SDLK_RIGHT)
-				eventManager->redo(pieces);
+				eventManager->redo();
 			break;
 		default:
 			break;

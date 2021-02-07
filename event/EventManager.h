@@ -92,17 +92,15 @@ public:
 	 * Function that is called when the left arrow is pressed.
 	 * Cancels the last move played.
 	 *
-	 * @param pieces Pieces that are currently on the board.
 	 */
-	void undo(const std::shared_ptr<Pieces> &pieces);
+	void undo();
 
 	/**
 	 * Function that is caled when the right arrow is pressed.
 	 * Cancels redo action.
 	 *
-	 * @param pieces Pieces that are current on the board.
 	 */
-	void redo(const std::shared_ptr<Pieces> &pieces);
+	void redo();
 
 };
 
