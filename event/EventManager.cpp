@@ -4,17 +4,7 @@
 
 #include "EventManager.h"
 #include "../piece/King.h"
-#include "../actions/State.h"
-
-EventManager::EventManager()
-{
-	state = new State;
-}
-
-EventManager::~EventManager()
-{
-	delete state;
-}
+#include "../undo/UndoManager.h"
 
 void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event)
 {
@@ -28,7 +18,7 @@ void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, cons
 	}
 }
 
-void EventManager::mouseReleased(const SDL_Event &event, Pieces *pieces)
+void EventManager::mouseReleased(const SDL_Event &event, const std::shared_ptr<Pieces> &pieces)
 {
 	if (liftedPiece)
 	{
@@ -62,7 +52,7 @@ void EventManager::switchTurn()
 	Game::turn = Game::turn == PieceColor::WHITE ? PieceColor::BLACK : PieceColor::WHITE;
 }
 
-void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
+void EventManager::correctMove(const SDL_Event &event, const std::shared_ptr<Pieces> &pieces)
 {
 	piece->alignPiece(event.button.x, event.button.y);
 	pieces->takePiece(piece->getPosition());
@@ -70,7 +60,7 @@ void EventManager::correctMove(const SDL_Event &event, Pieces *pieces)
 	pieces->getAvailableMoves();
 
 	castle();
-	handleCheck(pieces);
+	handleCheck(pieces.get());
 
 	switchTurn();
 	saveState(pieces);
@@ -110,7 +100,7 @@ void EventManager::redo(const std::shared_ptr<Pieces> &pieces)
 	std::cout << "Redo\n";
 }
 
-void EventManager::saveState(Pieces *pieces)
+void EventManager::saveState(const std::shared_ptr<Pieces> &pieces)
 {
-	state->pieces = pieces;
+//	UndoManager::getInstance().push(MoveAction());
 }

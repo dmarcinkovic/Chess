@@ -8,13 +8,10 @@
 #include <memory>
 
 #include "../piece/Piece.h"
-#include "../actions/State.h"
 
 class Piece;
 
 class Pieces;
-
-class State;
 
 /**
  * Class that is used to handle mouse events.
@@ -28,8 +25,6 @@ private:
 
 	std::shared_ptr<Piece> piece;
 
-	State *state;
-
 	/**
 	 * Method used to switch turn.
 	 */
@@ -41,7 +36,7 @@ private:
 	 * @param event Mouse event.
 	 * @param pieces Pointer to pieces class.
 	 */
-	void correctMove(const SDL_Event &event, Pieces *pieces);
+	void correctMove(const SDL_Event &event, const std::shared_ptr<Pieces> &pieces);
 
 	/**
 	 * Method called when user made invalid move.
@@ -66,19 +61,9 @@ private:
 	 *
 	 * @param pieces Current game state
 	 */
-	void saveState(Pieces *pieces);
+	void saveState(const std::shared_ptr<Pieces> &pieces);
 
 public:
-
-	/**
-	 * Constructor that creates initial state.
-	 */
-	EventManager();
-
-	/**
-	 * Destructor that deletes stored state.
-	 */
-	~EventManager();
 
 	/**
 	 * Mouse pressed event.
@@ -94,7 +79,7 @@ public:
 	 * @param event Reference to event.
 	 * @param pieces Pointer to pieces class.
 	 */
-	void mouseReleased(const SDL_Event &event, Pieces *pieces);
+	void mouseReleased(const SDL_Event &event, const std::shared_ptr<Pieces> &pieces);
 
 	/**
 	 * Mouse moved event.

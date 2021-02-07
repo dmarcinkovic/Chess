@@ -44,7 +44,7 @@ void Game::handleEvents()
 			break;
 		case SDL_MOUSEBUTTONUP :
 			if (event.button.button == SDL_BUTTON_LEFT)
-				eventManager->mouseReleased(event, pieces.get());
+				eventManager->mouseReleased(event, pieces);
 			break;
 		case SDL_MOUSEMOTION :
 			eventManager->mouseMoved(event);
