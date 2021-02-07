@@ -49,3 +49,4 @@ void UndoManager::push(MoveAction moveAction)
 	undoStack.push(std::move(moveAction));
 }
 
+

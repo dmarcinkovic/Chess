@@ -24,6 +24,7 @@ private:
 	bool liftedPiece{};
 
 	std::shared_ptr<Piece> piece;
+	std::shared_ptr<Pieces> previousPieces{};
 
 	/**
 	 * Method used to switch turn.
@@ -61,7 +62,7 @@ private:
 	 *
 	 * @param pieces Current game state
 	 */
-	static void saveState(const std::shared_ptr<Pieces> &pieces);
+	void saveState(const std::shared_ptr<Pieces> &pieces);
 
 public:
 
@@ -91,14 +92,12 @@ public:
 	/**
 	 * Function that is called when the left arrow is pressed.
 	 * Cancels the last move played.
-	 *
 	 */
 	static void undo();
 
 	/**
 	 * Function that is caled when the right arrow is pressed.
 	 * Cancels redo action.
-	 *
 	 */
 	static void redo();
 

@@ -4,8 +4,9 @@
 
 #include "MoveAction.h"
 
-MoveAction::MoveAction(const std::shared_ptr<Pieces> &pieces)
-		: chessPieces(pieces.get()), pieces(pieces->getPieces())
+MoveAction::MoveAction(const std::shared_ptr<Pieces> &currentPieces, const std::shared_ptr<Pieces> &previousPieces)
+		: chessPieces(currentPieces.get()), currentPieces(currentPieces->getPieces()),
+		  previousPieces(previousPieces->getPieces())
 {
 
 }
@@ -17,5 +18,5 @@ void MoveAction::executeDo()
 
 void MoveAction::executeUndo()
 {
-
+	
 }

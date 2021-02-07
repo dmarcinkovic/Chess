@@ -15,11 +15,12 @@
 class MoveAction : public Action
 {
 private:
-	std::vector<std::shared_ptr<Piece>> pieces;
+	std::vector<std::shared_ptr<Piece>> currentPieces;
+	std::vector<std::shared_ptr<Piece>> previousPieces;
 	Pieces *chessPieces;
 
 public:
-	explicit MoveAction(const std::shared_ptr<Pieces> &pieces);
+	MoveAction(const std::shared_ptr<Pieces> &currentPieces, const std::shared_ptr<Pieces> &previousPieces);
 
 	void executeDo() override;
 

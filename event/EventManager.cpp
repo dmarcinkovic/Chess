@@ -102,5 +102,11 @@ void EventManager::redo()
 
 void EventManager::saveState(const std::shared_ptr<Pieces> &pieces)
 {
-	UndoManager::getInstance().push(MoveAction(pieces));
+	if (previousPieces == nullptr)
+	{
+		previousPieces = pieces;
+	}
+
+	UndoManager::getInstance().push(MoveAction(pieces, previousPieces));
+	previousPieces = pieces;
 }
