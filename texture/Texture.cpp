@@ -7,15 +7,15 @@
 
 SDL_Texture *Texture::loadTexture(const char *path, int &width, int &height)
 {
-    SDL_Surface *surface = IMG_Load(path);
+	SDL_Surface *surface = IMG_Load(path);
 
-    width = surface->w;
-    height = surface->h;
+	width = surface->w;
+	height = surface->h;
 
-    SDL_Renderer *renderer = SDL_GetRenderer(Game::getWindow());
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_Renderer *renderer = SDL_GetRenderer(Game::getWindow());
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-    SDL_FreeSurface(surface);
+	SDL_FreeSurface(surface);
 
-    return texture;
+	return texture;
 }

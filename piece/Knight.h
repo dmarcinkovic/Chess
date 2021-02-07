@@ -16,16 +16,16 @@ class Knight : public Piece
 {
 public:
 
-    /**
-     * Creates new knight piece.
-     *
-     * @param x X position of knight.
-     * @param y Y position of knight.
-     * @param color Piece color.
-     */
-    Knight(int x, int y, const PieceColor &color);
+	/**
+	 * Creates new knight piece.
+	 *
+	 * @param x X position of knight.
+	 * @param y Y position of knight.
+	 * @param color Piece color.
+	 */
+	Knight(int x, int y, const PieceColor &color);
 
-    void getAvailableMoves() override;
+	void getAvailableMoves() override;
 };
 
 

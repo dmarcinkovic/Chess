@@ -16,30 +16,30 @@ class Queen : public Piece
 {
 private:
 
-    /**
-     * Method used to add diagonal moves
-     * for queen.
-     */
-    void getDiagonalAvailableMoves();
+	/**
+	 * Method used to add diagonal moves
+	 * for queen.
+	 */
+	void getDiagonalAvailableMoves();
 
-    /**
-     * Method used to add horizontal and vertical available
-     * moves for queen.
-     */
-    void getHorizontalAvailableMoves();
+	/**
+	 * Method used to add horizontal and vertical available
+	 * moves for queen.
+	 */
+	void getHorizontalAvailableMoves();
 
 public:
 
-    /**
-     * Creates new queen piece.
-     *
-     * @param x X position of chess queen.
-     * @param y Y position of chess queen.
-     * @param color Piece color.
-     */
-    Queen(int x, int y, const PieceColor &color);
+	/**
+	 * Creates new queen piece.
+	 *
+	 * @param x X position of chess queen.
+	 * @param y Y position of chess queen.
+	 * @param color Piece color.
+	 */
+	Queen(int x, int y, const PieceColor &color);
 
-    void getAvailableMoves() override;
+	void getAvailableMoves() override;
 };
 
 

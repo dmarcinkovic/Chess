@@ -17,14 +17,14 @@ class Pieces;
 class ICheckObserver
 {
 public:
-    virtual ~ICheckObserver() = default;
+	virtual ~ICheckObserver() = default;
 
-    /**
-     * Method called when event occurs.
-     *
-     * @param pieces Pointer to all pieces on the board.
-     */
-    virtual void update(Pieces *pieces) = 0;
+	/**
+	 * Method called when event occurs.
+	 *
+	 * @param pieces Pointer to all pieces on the board.
+	 */
+	virtual void update(Pieces *pieces) = 0;
 };
 
 /**
@@ -35,7 +35,7 @@ public:
 class CheckObserver : public ICheckObserver
 {
 public:
-    void update(Pieces *pieces) override;
+	void update(Pieces *pieces) override;
 };
 
 

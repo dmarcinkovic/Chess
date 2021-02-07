@@ -16,16 +16,16 @@ class Rook : public Piece
 {
 public:
 
-    /**
-     * Creates new knight piece.
-     *
-     * @param x X position of chess rook.
-     * @param y Y position of chess rook.
-     * @param color Piece color.
-     */
-    Rook(int x, int y, const PieceColor &color);
+	/**
+	 * Creates new knight piece.
+	 *
+	 * @param x X position of chess rook.
+	 * @param y Y position of chess rook.
+	 * @param color Piece color.
+	 */
+	Rook(int x, int y, const PieceColor &color);
 
-    void getAvailableMoves() override;
+	void getAvailableMoves() override;
 };
 
 

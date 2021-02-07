@@ -6,5 +6,5 @@
 
 void CheckObserver::update(Pieces *pieces)
 {
-    pieces->update();
+	pieces->update();
 }

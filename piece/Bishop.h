@@ -17,16 +17,16 @@ class Bishop : public Piece
 
 public:
 
-    /**
-     * Creates new knight piece.
-     *
-     * @param x X position of bishop.
-     * @param y Y position of bishop.
-     * @param color Piece color.
-     */
-    Bishop(int x, int y, const PieceColor &color);
+	/**
+	 * Creates new knight piece.
+	 *
+	 * @param x X position of bishop.
+	 * @param y Y position of bishop.
+	 * @param color Piece color.
+	 */
+	Bishop(int x, int y, const PieceColor &color);
 
-    void getAvailableMoves() override;
+	void getAvailableMoves() override;
 };
 
 

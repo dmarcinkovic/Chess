@@ -15,7 +15,7 @@
  */
 enum class PieceType
 {
-    King, Queen, Bishop, Rook, Pawn, Knight
+	King, Queen, Bishop, Rook, Pawn, Knight
 };
 
 /**
@@ -28,16 +28,16 @@ class PieceFactory
 {
 public:
 
-    /**
-     * Method that returns new piece according to PieceType.
-     *
-     * @param type PieceType.
-     * @param x X position of piece.
-     * @param y Y position of piece-
-     * @param pieceColor Piece color. White or black.
-     * @return New chess piece.
-     */
-    static std::shared_ptr<Piece> getPiece(PieceType type, int x, int y, const PieceColor &pieceColor);
+	/**
+	 * Method that returns new piece according to PieceType.
+	 *
+	 * @param type PieceType.
+	 * @param x X position of piece.
+	 * @param y Y position of piece-
+	 * @param pieceColor Piece color. White or black.
+	 * @return New chess piece.
+	 */
+	static std::shared_ptr<Piece> getPiece(PieceType type, int x, int y, const PieceColor &pieceColor);
 };
 
 
