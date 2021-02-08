@@ -289,6 +289,13 @@ public:
 	 * @return Chess pieces
 	 */
 	const std::vector<std::shared_ptr<Piece>> &getPieces() const;
+
+	/**
+	 * Setter for pieces
+	 *
+	 * @param newPieces New pieces
+	 */
+	void setPieces(std::vector<std::shared_ptr<Piece>> newPieces);
 };
 
 

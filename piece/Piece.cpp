@@ -293,3 +293,8 @@ const std::vector<std::shared_ptr<Piece>> &Pieces::getPieces() const
 {
 	return pieces;
 }
+
+void Pieces::setPieces(std::vector<std::shared_ptr<Piece>> newPieces)
+{
+	pieces = std::move(newPieces);
+}

@@ -18,5 +18,5 @@ void MoveAction::executeDo()
 
 void MoveAction::executeUndo()
 {
-	
+
 }
