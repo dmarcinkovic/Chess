@@ -37,6 +37,7 @@ private:
 	SDL_Renderer *renderer;
 	SDL_Event event{};
 	bool running;
+	bool keyPressed{};
 
 	std::unique_ptr<Board> board;
 	std::shared_ptr<Pieces> pieces;

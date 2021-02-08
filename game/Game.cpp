@@ -50,7 +50,11 @@ void Game::handleEvents()
 			eventManager->mouseMoved(event);
 			break;
 		case SDL_KEYDOWN :
-			handleKeyEvents();
+			keyPressed = true;
+			break;
+		case SDL_KEYUP :
+			if (keyPressed)
+				handleKeyEvents();
 			break;
 		default:
 			break;
@@ -85,4 +89,5 @@ void Game::handleKeyEvents()
 		eventManager->undo();
 	else if (event.key.keysym.sym == SDLK_RIGHT)
 		eventManager->redo();
+	keyPressed = false;
 }
