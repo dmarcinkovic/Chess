@@ -22,6 +22,8 @@ Game::Game(const char *title, int w, int h)
 	pieces = std::make_shared<Pieces>();
 	pieces->getAvailableMoves();
 	pieces->addObserver(checkObserver.get());
+
+	eventManager = std::make_unique<EventManager>(pieces);
 }
 
 Game::~Game()

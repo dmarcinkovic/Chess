@@ -67,6 +67,13 @@ private:
 public:
 
 	/**
+	 * Constructor.
+	 *
+	 * @param pieces Initial state of pieces
+	 */
+	explicit EventManager(std::shared_ptr<Pieces> pieces);
+
+	/**
 	 * Mouse pressed event.
 	 *
 	 * @param pressedPiece Pressed piece.

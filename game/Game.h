@@ -42,7 +42,7 @@ private:
 	std::unique_ptr<Board> board;
 	std::shared_ptr<Pieces> pieces;
 
-	std::unique_ptr<EventManager> eventManager = std::make_unique<EventManager>();
+	std::unique_ptr<EventManager> eventManager{};
 	std::unique_ptr<ICheckObserver> checkObserver;
 
 public:

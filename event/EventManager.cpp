@@ -6,6 +6,12 @@
 #include "../piece/King.h"
 #include "../undo/UndoManager.h"
 
+EventManager::EventManager(std::shared_ptr<Pieces> pieces)
+	: previousPieces(std::move(pieces))
+{
+
+}
+
 void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event)
 {
 	if (pressedPiece && Game::turn == (*pressedPiece)->getPieceColor())
@@ -102,11 +108,7 @@ void EventManager::redo()
 
 void EventManager::saveState(const std::shared_ptr<Pieces> &pieces)
 {
-	if (previousPieces == nullptr)
-	{
-		previousPieces = pieces;
-	}
-
+	std::cout << "Save state: " << (previousPieces == pieces) << '\n';
 	UndoManager::getInstance().push(MoveAction(pieces, previousPieces));
 	previousPieces = pieces;
 }

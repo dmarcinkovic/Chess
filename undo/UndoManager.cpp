@@ -4,7 +4,7 @@
 
 #include "UndoManager.h"
 
-UndoManager UndoManager::getInstance()
+UndoManager &UndoManager::getInstance()
 {
 	static UndoManager instance;
 

@@ -16,7 +16,7 @@ private:
 	std::stack<MoveAction> redoStack;
 
 public:
-	static UndoManager getInstance();
+	static UndoManager &getInstance();
 
 	void undo();
 
