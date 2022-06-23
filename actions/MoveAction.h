@@ -17,6 +17,7 @@ class MoveAction : public Action
 private:
 	std::vector<std::shared_ptr<Piece>> currentPieces;
 	std::vector<std::shared_ptr<Piece>> previousPieces;
+
 	Pieces *chessPieces;
 
 public:

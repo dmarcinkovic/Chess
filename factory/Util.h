@@ -48,12 +48,14 @@ struct ChessSquares
 	 * position on the board.
 	 *
 	 * @param square Position on the board.
-	 * @return PiieceType according to the starting position on the board.
+	 * @return PieceType according to the starting position on the board.
 	 */
 	static constexpr PieceType getPieceType(const char *square)
 	{
 		if (square[1] == '2' || square[1] == '7')
+		{
 			return PieceType::Pawn;
+		}
 
 		switch (square[0])
 		{

@@ -42,11 +42,15 @@ void Game::handleEvents()
 			break;
 		case SDL_MOUSEBUTTONDOWN :
 			if (event.button.button == SDL_BUTTON_LEFT)
+			{
 				eventManager->mousePressed(pieces->getPiece(event.button.x, event.button.y), event);
+			}
 			break;
 		case SDL_MOUSEBUTTONUP :
 			if (event.button.button == SDL_BUTTON_LEFT)
+			{
 				eventManager->mouseReleased(event, pieces);
+			}
 			break;
 		case SDL_MOUSEMOTION :
 			eventManager->mouseMoved(event);
@@ -56,7 +60,9 @@ void Game::handleEvents()
 			break;
 		case SDL_KEYUP :
 			if (keyPressed)
+			{
 				handleKeyEvents();
+			}
 			break;
 		default:
 			break;
@@ -86,10 +92,14 @@ SDL_Window *Game::getWindow()
 void Game::handleKeyEvents()
 {
 	if (event.key.keysym.sym == SDLK_f)
+	{
 		board->flip();
-	else if (event.key.keysym.sym == SDLK_LEFT)
+	} else if (event.key.keysym.sym == SDLK_LEFT)
+	{
 		eventManager->undo();
-	else if (event.key.keysym.sym == SDLK_RIGHT)
+	} else if (event.key.keysym.sym == SDLK_RIGHT)
+	{
 		eventManager->redo();
+	}
 	keyPressed = false;
 }

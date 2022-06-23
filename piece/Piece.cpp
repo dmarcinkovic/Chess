@@ -35,6 +35,7 @@ void Piece::setPosition(int x, int y)
 void Piece::alignPiece(int x, int y)
 {
 	auto result = Board::getAlignedPosition(x, y);
+
 	destRect.x = result.first;
 	destRect.y = result.second;
 }
@@ -43,7 +44,7 @@ void Piece::markAvailableMoves() const
 {
 	SDL_Renderer *renderer = SDL_GetRenderer(Game::getWindow());
 
-	for (auto &position : moves)
+	for (auto &position: moves)
 	{
 		SDL_Rect rect{position.first, position.second, Board::width, Board::height};
 
@@ -140,12 +141,15 @@ Pieces::Pieces()
 
 void Pieces::draw() const
 {
-	for (auto const &piece : pieces)
+	for (auto const &piece: pieces)
 	{
-		if (piece->mark) piece->markAvailableMoves();
+		if (piece->mark)
+		{
+			piece->markAvailableMoves();
+		}
 	}
 
-	for (auto const &piece : pieces)
+	for (auto const &piece: pieces)
 	{
 		piece->draw();
 	}
@@ -173,7 +177,7 @@ constexpr void Pieces::addPieces()
 
 void Pieces::getAvailableMoves()
 {
-	for (auto const &piece : pieces)
+	for (auto const &piece: pieces)
 	{
 		piece->getAvailableMoves();
 	}
@@ -181,22 +185,24 @@ void Pieces::getAvailableMoves()
 
 constexpr void Pieces::addWhitePieces()
 {
-	for (auto const &square : ChessSquares::getWhitePieces())
+	for (auto const &square: ChessSquares::getWhitePieces())
 	{
-		auto[x, y] = Board::getPosition(square);
-		pieces.emplace_back(PieceFactory::getPiece(
-				ChessSquares::getPieceType(square), x, y, PieceColor::WHITE));
+		auto [x, y] = Board::getPosition(square);
+		PieceType type = ChessSquares::getPieceType(square);
+		pieces.emplace_back(PieceFactory::getPiece(type, x, y, PieceColor::WHITE));
+
 		Board::occupied[std::make_pair(x, y)] = pieces.back();
 	}
 }
 
 constexpr void Pieces::addBlackPieces()
 {
-	for (auto const &square : ChessSquares::getBlackPieces())
+	for (auto const &square: ChessSquares::getBlackPieces())
 	{
-		auto[x, y] = Board::getPosition(square);
-		pieces.emplace_back(PieceFactory::getPiece(
-				ChessSquares::getPieceType(square), x, y, PieceColor::BLACK));
+		auto [x, y] = Board::getPosition(square);
+		PieceType type = ChessSquares::getPieceType(square);
+		pieces.emplace_back(PieceFactory::getPiece(type, x, y, PieceColor::BLACK));
+
 		Board::occupied[std::make_pair(x, y)] = pieces.back();
 	}
 }
@@ -216,8 +222,12 @@ bool Pieces::isCheck()
 {
 	for (auto const &piece: pieces)
 	{
-		if (piece->color != Game::turn) continue;
-		for (auto const &square : piece->moves)
+		if (piece->color != Game::turn)
+		{
+			continue;
+		}
+
+		for (auto const &square: piece->moves)
 		{
 			if (dynamic_cast<King *>(Board::occupied[square].get()))
 			{
@@ -233,9 +243,9 @@ bool Pieces::isStalemate()
 {
 	int totalNumberOfAvailableMoves = 0;
 
-	for (auto const &piece : pieces)
+	for (auto const &piece: pieces)
 	{
-		totalNumberOfAvailableMoves += piece->moves.size();
+		totalNumberOfAvailableMoves += static_cast<int>(piece->moves.size());
 	}
 
 	return totalNumberOfAvailableMoves > 0;
@@ -260,7 +270,7 @@ void Pieces::notifyAll(Pieces *pieces1)
 
 void Pieces::update()
 {
-	for (auto &piece : pieces)
+	for (auto &piece: pieces)
 	{
 		if (piece->getPieceColor() != Game::turn)
 		{
@@ -268,7 +278,7 @@ void Pieces::update()
 			std::pair<int, int> position = {piece->destRect.x, piece->destRect.y};
 
 			Board::occupied[position] = nullptr;
-			for (auto &move : piece->moves)
+			for (auto &move: piece->moves)
 			{
 				piece->setPosition(move.first, move.second);
 				Board::occupied[move] = piece;

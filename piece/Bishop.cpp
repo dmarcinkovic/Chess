@@ -15,8 +15,8 @@ void Bishop::getAvailableMoves()
 	moves.clear();
 
 	bool direction[] = {true, true, true, true};
-	constexpr const int indices1[] = {-1, -1, 1, 1};
-	constexpr const int indices2[] = {1, -1, 1, -1};
+	constexpr int indices1[] = {-1, -1, 1, 1};
+	constexpr int indices2[] = {1, -1, 1, -1};
 
 	insertMoves(direction, indices1, indices2, 4);
 }

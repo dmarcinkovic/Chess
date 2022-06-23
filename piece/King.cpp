@@ -20,7 +20,10 @@ void King::getAvailableMoves()
 	{
 		for (int j = -1; j <= 1; ++j)
 		{
-			if (i == 0 && j == 0) continue;
+			if (i == 0 && j == 0)
+			{
+				continue;
+			}
 
 			auto position = std::make_pair(destRect.x + i * Board::width,
 										   destRect.y + j * Board::height);

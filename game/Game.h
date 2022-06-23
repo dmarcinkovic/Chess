@@ -36,6 +36,7 @@ private:
 	static SDL_Window *window;
 	SDL_Renderer *renderer;
 	SDL_Event event{};
+
 	bool running;
 	bool keyPressed{};
 

@@ -7,9 +7,8 @@
 #include "../undo/UndoManager.h"
 
 EventManager::EventManager(std::shared_ptr<Pieces> pieces)
-	: previousPieces(std::move(pieces))
+		: previousPieces(std::move(pieces))
 {
-
 }
 
 void EventManager::mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event)
@@ -39,7 +38,10 @@ void EventManager::mouseReleased(const SDL_Event &event, const std::shared_ptr<P
 		}
 	}
 
-	if (piece) piece->setMarkMoves(false);
+	if (piece)
+	{
+		piece->setMarkMoves(false);
+	}
 
 	piece = nullptr;
 }
