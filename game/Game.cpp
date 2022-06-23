@@ -21,7 +21,7 @@ Game::Game(const char *title, int w, int h)
 
 	renderer = SDL_CreateRenderer(window, -1, false);
 
-	board = std::make_unique<Board>(w, h, "resources/board.jpg");
+	board = std::make_unique<Board>(w, h);
 
 	pieces = std::make_shared<Pieces>();
 	pieces->getAvailableMoves();

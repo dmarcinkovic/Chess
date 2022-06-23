@@ -57,10 +57,9 @@ public:
 
 	 * @param w Width of the board.
 	 * @param h Height of the board.
-	 * @param boardFile Path to the board texture
 	 *
 	 */
-	Board(int w, int h, const char *boardFile);
+	Board(int w, int h);
 
 	/**
 	 * Board destructor. Used to destroy board texture.

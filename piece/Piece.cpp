@@ -5,6 +5,7 @@
 #include "Piece.h"
 #include "Texture.h"
 #include "Game.h"
+#include "pieces.png.h"
 
 int Piece::width, Piece::height;
 SDL_Texture *Piece::piece;
@@ -14,7 +15,7 @@ Piece::Piece(int x, int y, const PieceColor &color)
 {
 	if (piece == nullptr)
 	{
-		piece = Texture::loadTexture("resources/pieces.png", width, height);
+		piece = Texture::loadTexture(pieces_png, pieces_png_len, width, height);
 	}
 
 	destRect = SDL_Rect{x, y, Board::width, Board::height};

@@ -6,6 +6,7 @@
 #include "Texture.h"
 #include "Game.h"
 #include "Piece.h"
+#include "board.jpg.h"
 
 int Board::width;
 int Board::height;
@@ -17,12 +18,12 @@ bool Board::flipped = false;
 
 std::unordered_map<std::pair<int, int>, std::shared_ptr<Piece>, PairHash> Board::occupied;
 
-Board::Board(int w, int h, const char *boardFile)
+Board::Board(int w, int h)
 {
 	int windowWidth, windowHeight;
 	SDL_GetWindowSize(Game::getWindow(), &windowWidth, &windowHeight);
 
-	board = Texture::loadTexture(boardFile, srcRect.w, srcRect.h);
+	board = Texture::loadTexture(board_jpg, board_jpg_len, srcRect.w, srcRect.h);
 
 	destRect = SDL_Rect{0, 0, w, h};
 	width = static_cast<int>(0.1163 * windowWidth);

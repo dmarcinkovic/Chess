@@ -5,9 +5,10 @@
 #include "Texture.h"
 #include "Game.h"
 
-SDL_Texture *Texture::loadTexture(const char *path, int &width, int &height)
+SDL_Texture *Texture::loadTexture(std::uint8_t *data, unsigned int size, int &width, int &height)
 {
-	SDL_Surface *surface = IMG_Load(path);
+	SDL_RWops *rw = SDL_RWFromMem(data, static_cast<int>(size));
+	SDL_Surface *surface = IMG_Load_RW(rw, 1);
 
 	width = surface->w;
 	height = surface->h;
