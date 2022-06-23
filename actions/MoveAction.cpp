@@ -3,6 +3,7 @@
 //
 
 #include "MoveAction.h"
+#include "../piece/Pieces.h"
 
 MoveAction::MoveAction(const std::shared_ptr<Pieces> &currentPieces, const std::shared_ptr<Pieces> &previousPieces)
 		: chessPieces(currentPieces.get()), currentPieces(currentPieces->getPieces()),

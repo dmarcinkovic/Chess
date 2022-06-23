@@ -3,6 +3,7 @@
 //
 
 #include "CheckObserver.h"
+#include "../piece/Pieces.h"
 
 void CheckObserver::update(Pieces *pieces)
 {

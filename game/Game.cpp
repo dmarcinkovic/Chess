@@ -3,6 +3,7 @@
 //
 
 #include "Game.h"
+#include "../piece/Pieces.h"
 
 PieceColor Game::turn = PieceColor::WHITE;
 SDL_Window *Game::window;

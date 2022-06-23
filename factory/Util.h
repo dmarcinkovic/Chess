@@ -16,7 +16,6 @@
  */
 struct ChessSquares
 {
-
 	/**
 	 * Method that returns new array which contains
 	 * squares on which white pieces are placed at the start of
