@@ -10,7 +10,7 @@
 #include <memory>
 
 #include "Action.h"
-#include "../piece/Piece.h"
+#include "Piece.h"
 
 class MoveAction : public Action
 {
@@ -18,10 +18,10 @@ private:
 	std::vector<std::shared_ptr<Piece>> currentPieces;
 	std::vector<std::shared_ptr<Piece>> previousPieces;
 
-	Pieces *chessPieces;
+	class Pieces *chessPieces;
 
 public:
-	MoveAction(const std::shared_ptr<Pieces> &currentPieces, const std::shared_ptr<Pieces> &previousPieces);
+	MoveAction(const std::shared_ptr<class Pieces> &currentPieces, const std::shared_ptr<class Pieces> &previousPieces);
 
 	void executeDo() override;
 

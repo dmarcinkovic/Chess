@@ -3,12 +3,12 @@
 //
 
 #include "PieceFactory.h"
-#include "../piece/King.h"
-#include "../piece/Queen.h"
-#include "../piece/Bishop.h"
-#include "../piece/Rook.h"
-#include "../piece/Pawn.h"
-#include "../piece/Knight.h"
+#include "King.h"
+#include "Queen.h"
+#include "Bishop.h"
+#include "Rook.h"
+#include "Pawn.h"
+#include "Knight.h"
 
 std::shared_ptr<Piece> PieceFactory::getPiece(PieceType type, int x, int y, const PieceColor &color)
 {

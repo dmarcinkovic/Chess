@@ -9,12 +9,7 @@
 #include <unordered_map>
 #include <memory>
 
-#include "../game/Game.h"
-
-#include "../piece/Piece.h"
-#include "../pair/PairHash.h"
-
-class Piece;
+#include "PairHash.h"
 
 /**
  * Represents chess board.
@@ -55,7 +50,7 @@ public:
 	/**
 	 * Map that stores all pieces.
 	 */
-	static std::unordered_map<std::pair<int, int>, std::shared_ptr<Piece>, PairHash> occupied;
+	static std::unordered_map<std::pair<int, int>, std::shared_ptr<class Piece>, PairHash> occupied;
 
 	/**
 	 * Initialize board.

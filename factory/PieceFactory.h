@@ -6,7 +6,7 @@
 #define CHESS_PIECEFACTORY_H
 
 #include <memory>
-#include "../piece/Piece.h"
+#include "Piece.h"
 
 /**
  * Enum that represents types of pieces.

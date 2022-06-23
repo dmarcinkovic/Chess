@@ -3,7 +3,8 @@
 //
 
 #include "Piece.h"
-#include "../factory/Util.h"
+#include "Texture.h"
+#include "Game.h"
 
 int Piece::width, Piece::height;
 SDL_Texture *Piece::piece;

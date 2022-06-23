@@ -7,12 +7,9 @@
 
 #include <SDL2/SDL.h>
 #include <unordered_set>
-#include <functional>
 
-#include "../texture/Texture.h"
-#include "../game/Game.h"
-#include "../pair/PairHash.h"
-#include "../observer/CheckObserver.h"
+#include "PairHash.h"
+#include "Board.h"
 
 /**
  * Enum that represents piece color.

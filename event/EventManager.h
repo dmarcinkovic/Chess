@@ -6,12 +6,7 @@
 #define CHESS_EVENTMANAGER_H
 
 #include <memory>
-
-#include "../piece/Piece.h"
-
-class Piece;
-
-class Pieces;
+#include <SDL2/SDL.h>
 
 /**
  * Class that is used to handle mouse events.
@@ -23,8 +18,8 @@ class EventManager
 private:
 	bool liftedPiece{};
 
-	std::shared_ptr<Piece> piece;
-	std::shared_ptr<Pieces> previousPieces{};
+	std::shared_ptr<class Piece> piece;
+	std::shared_ptr<class Pieces> previousPieces{};
 
 	/**
 	 * Method used to switch turn.
@@ -37,7 +32,7 @@ private:
 	 * @param event Mouse event.
 	 * @param pieces Pointer to pieces class.
 	 */
-	void correctMove(const SDL_Event &event, const std::shared_ptr<Pieces> &pieces);
+	void correctMove(const SDL_Event &event, const std::shared_ptr<class Pieces> &pieces);
 
 	/**
 	 * Method called when user made invalid move.
@@ -49,7 +44,7 @@ private:
 	 *  If king is under attack, it checks if user
 	 *  moved the king or cover the king.
 	 */
-	static void handleCheck(Pieces *pieces);
+	static void handleCheck(class Pieces *pieces);
 
 	/**
 	 * Method checks if current move is castle move.
@@ -62,16 +57,15 @@ private:
 	 *
 	 * @param pieces Current game state
 	 */
-	void saveState(const std::shared_ptr<Pieces> &pieces);
+	void saveState(const std::shared_ptr<class Pieces> &pieces);
 
 public:
-
 	/**
 	 * Constructor.
 	 *
 	 * @param pieces Initial state of pieces
 	 */
-	explicit EventManager(std::shared_ptr<Pieces> pieces);
+	explicit EventManager(std::shared_ptr<class Pieces> pieces);
 
 	/**
 	 * Mouse pressed event.
@@ -79,7 +73,7 @@ public:
 	 * @param pressedPiece Pressed piece.
 	 * @param event Reference to event.
 	 */
-	void mousePressed(const std::shared_ptr<Piece> *pressedPiece, const SDL_Event &event);
+	void mousePressed(const std::shared_ptr<class Piece> *pressedPiece, const SDL_Event &event);
 
 	/**
 	 * Mouse released event.
@@ -87,7 +81,7 @@ public:
 	 * @param event Reference to event.
 	 * @param pieces Pointer to pieces class.
 	 */
-	void mouseReleased(const SDL_Event &event, const std::shared_ptr<Pieces> &pieces);
+	void mouseReleased(const SDL_Event &event, const std::shared_ptr<class Pieces> &pieces);
 
 	/**
 	 * Mouse moved event.
@@ -103,7 +97,7 @@ public:
 	static void undo();
 
 	/**
-	 * Function that is caled when the right arrow is pressed.
+	 * Function that is called when the right arrow is pressed.
 	 * Cancels redo action.
 	 */
 	static void redo();

@@ -5,9 +5,9 @@
 #ifndef CHESS_UNDOMANAGER_H
 #define CHESS_UNDOMANAGER_H
 
-
 #include <stack>
-#include "../actions/MoveAction.h"
+
+#include "MoveAction.h"
 
 class UndoManager
 {

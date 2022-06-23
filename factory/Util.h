@@ -5,7 +5,6 @@
 #ifndef CHESS_UTIL_H
 #define CHESS_UTIL_H
 
-
 #include "PieceFactory.h"
 
 /**

@@ -5,7 +5,6 @@
 #ifndef CHESS_ACTION_H
 #define CHESS_ACTION_H
 
-
 class Action
 {
 public:

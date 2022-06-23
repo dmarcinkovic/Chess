@@ -1,6 +1,7 @@
-#include "game/Game.h"
 #include <chrono>
 #include <iostream>
+
+#include "Game.h"
 
 int main()
 {

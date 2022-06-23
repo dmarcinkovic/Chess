@@ -3,9 +3,11 @@
 //
 
 #include "Pieces.h"
-#include "../factory/PieceFactory.h"
-#include "../factory/Util.h"
+#include "PieceFactory.h"
+#include "Util.h"
 #include "King.h"
+#include "CheckObserver.h"
+#include "Game.h"
 
 Pieces::Pieces()
 {

@@ -3,7 +3,7 @@
 //
 
 #include "Texture.h"
-#include "../game/Game.h"
+#include "Game.h"
 
 SDL_Texture *Texture::loadTexture(const char *path, int &width, int &height)
 {

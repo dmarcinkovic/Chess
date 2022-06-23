@@ -3,6 +3,9 @@
 //
 
 #include "Board.h"
+#include "Texture.h"
+#include "Game.h"
+#include "Piece.h"
 
 int Board::width;
 int Board::height;

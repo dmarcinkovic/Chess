@@ -5,10 +5,6 @@
 #ifndef CHESS_CHECKOBSERVER_H
 #define CHESS_CHECKOBSERVER_H
 
-#include "../piece/Piece.h"
-
-class Pieces;
-
 /**
  * Interface that represents listener to check event.
  *
@@ -24,7 +20,7 @@ public:
 	 *
 	 * @param pieces Pointer to all pieces on the board.
 	 */
-	virtual void update(Pieces *pieces) = 0;
+	virtual void update(class Pieces *pieces) = 0;
 };
 
 /**
@@ -35,7 +31,7 @@ public:
 class CheckObserver : public ICheckObserver
 {
 public:
-	void update(Pieces *pieces) override;
+	void update(class Pieces *pieces) override;
 };
 
 

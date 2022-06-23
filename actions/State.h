@@ -5,15 +5,9 @@
 #ifndef CHESS_STATE_H
 #define CHESS_STATE_H
 
-#include <vector>
-
-#include "../piece/Piece.h"
-
-class Pieces;
-
 struct State
 {
-	Pieces *pieces;
+	class Pieces *pieces;
 };
 
 

@@ -3,9 +3,11 @@
 //
 
 #include "EventManager.h"
-#include "../piece/King.h"
-#include "../undo/UndoManager.h"
-#include "../piece/Pieces.h"
+#include "King.h"
+#include "UndoManager.h"
+#include "Pieces.h"
+#include "Piece.h"
+#include "Game.h"
 
 EventManager::EventManager(std::shared_ptr<Pieces> pieces)
 		: previousPieces(std::move(pieces))

@@ -8,22 +8,7 @@
 #include <SDL2/SDL.h>
 #include <memory>
 
-#include "../board/Board.h"
-#include "../piece/Piece.h"
-#include "../event/EventManager.h"
-#include "../observer/CheckObserver.h"
-
-class Pieces;
-
-class EventManager;
-
-class CheckObserver;
-
-class ICheckObserver;
-
-class Board;
-
-enum class PieceColor;
+#include "Piece.h"
 
 /**
  * Main class. This class creates game loop.
@@ -40,11 +25,11 @@ private:
 	bool running;
 	bool keyPressed{};
 
-	std::unique_ptr<Board> board;
-	std::shared_ptr<Pieces> pieces;
+	std::unique_ptr<class Board> board;
+	std::shared_ptr<class Pieces> pieces;
 
-	std::unique_ptr<EventManager> eventManager{};
-	std::unique_ptr<ICheckObserver> checkObserver;
+	std::unique_ptr<class EventManager> eventManager{};
+	std::unique_ptr<class ICheckObserver> checkObserver;
 
 public:
 	/**
