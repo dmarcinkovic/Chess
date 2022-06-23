@@ -3,6 +3,9 @@ project(Chess)
 
 set(CMAKE_CXX_STANDARD 20)
 
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
 add_executable(${PROJECT_NAME} main.cpp
         game/Game.cpp game/Game.h
         texture/Texture.cpp texture/Texture.h
@@ -38,4 +41,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_SOURCE_DIR}/texture
         ${CMAKE_SOURCE_DIR}/undo)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL2 SDL2_ttf SDL2_image)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${CONAN_LIBS})
